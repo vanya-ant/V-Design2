@@ -1,0 +1,163 @@
+@import '../../../assets/scss/responsive';
+
+.site-header{
+  background-color:var(--header-and-footer-color);
+  height:3em;
+  align-items:center;
+  width:100%;
+
+  @include bp (mobile)  {
+    height: auto;
+    display: block;
+  }
+
+  @include bp (tablet)  {
+    height: auto;
+    display: block;
+  }
+
+  @include bp (phone)  {
+    height: auto;
+    display: block;
+
+    .site-nav-login-register {
+      padding-left: 0;
+    }
+  }
+}
+
+.logo img{
+  width:7em;
+  height:auto;
+  margin-top:.5em;
+  margin-left:2em;
+  margin-right:2em;
+}
+
+.site-header,footer{
+  display:flex;
+  justify-content:space-between;
+}
+
+.site-nav {
+  display:flex;
+  justify-content:space-evenly;
+
+  @include bp (mobile)  {
+    height: auto;
+    display: block;
+    position: relative;
+    padding-bottom: 0.5em;
+    margin-left: 0;
+
+    & .page-link {
+      border-bottom: 0.05em solid var(--golden-text);
+    }
+
+    & .site-nav-login-register a:last-child {
+      padding-left: 0;
+    }
+  }
+
+  @include bp (phone)  {
+    height: auto;
+    display: block;
+    position: relative;
+    padding-bottom: 0.5em;
+
+    & .page-link {
+      border-bottom: 0.05em solid var(--golden-text);
+    }
+  }
+}
+
+.page-link {
+  align-self: center;
+}
+
+.site-nav .page-link:hover {
+  color: var(--golden-text);
+}
+
+.active a {
+  color: var(--golden-text);
+}
+
+.site-nav-login-register .page-link:hover {
+  color: var(--text-primary-color);
+}
+
+footer {
+  justify-content:flex-end;
+}
+
+.site-nav a {
+  text-decoration:none;
+  color:var(--text-primary-color);
+  justify-items: center;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.site-nav-login-register {
+  padding-left:5em;
+}
+
+.site-nav-login-register a {
+  text-decoration:none;
+  color:var(--golden-text);
+}
+
+.site-title,footer a {
+  text-decoration:none;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--header-and-footer-color);
+  color: var(--text-primary-color);
+  padding: 0.5em;
+  position: relative;
+  left: 0;
+  bottom: 0;
+
+  @include bp (mobile)  {
+    display: block;
+    text-align: center;
+  }
+
+  @include bp (phone)  {
+    display: block;
+  }
+}
+
+footer a {
+  color:inherit;
+  padding-right:1em;
+}
+
+.border-animation {
+  border-left:2px solid var(--golden-text);
+  animation: slide-in-top 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;;
+}
+
+@keyframes slide-in-top {
+  0% {
+    transform: translateY(-1000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.hello {
+  color: var(--golden-text);
+}
+
+.logged {
+  padding-left: 1em;
+  padding-top: 0.5em;
+}

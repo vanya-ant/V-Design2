@@ -1,0 +1,61 @@
+@import 'responsive';
+
+*{
+  font-family:'Lato',sans-serif;
+
+  @include bp(phone) {
+    font-size: var(--font-size-phone);
+  }
+
+  @include bp(mobile) {
+    font-size: var(--font-size-tablet);
+  }
+
+  @include bp(tablet) {
+    font-size: var(--font-size-tablet);
+  }
+
+  @include bp(desktop) {
+    font-size: var(--font-size-desktop);
+  }
+
+  @include bp(large) {
+    font-size: var(--font-size-desktop);
+  }
+}
+
+.presentation-heading h1{
+  font: 3em 'Lato', serif;
+}
+
+blockquote {
+  font-style: italic;
+  padding-left: 0.5em;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  color: inherit;
+  text-decoration: none;
+
+  strong {
+    color: var(--text-headings-color);
+  }
+}
+
+.about h1 {
+  font-size: 2em;
+  margin-top: 0.5em;
+  margin-bottom: 2em;
+  border-bottom: 0.08em solid var(--golden-text);
+  text-shadow: 0 0 0.2em var(--golden-text);
+}
+
+.about h3 {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.about p {
+  margin-bottom: 0.5em;
+  text-indent: 0.5em;
+}

@@ -1,0 +1,97 @@
+@import '../../../assets/scss/responsive';
+
+.register {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register-form {
+  width: 80vw;
+  height: auto;
+  border: 0.2em solid var(--text-primary-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5em;
+  margin: 1.4em 0.5em;
+}
+
+.register-form input {
+  font-style: italic;
+  color: var(--golden-text); border: 2px solid var(--golden-text);
+  background-color:var(--text-primary-color);
+  padding: 0.2em;
+}
+
+.register-form select {
+  color: var(--golden-text); border: 2px solid var(--golden-text);
+  background-color:var(--text-primary-color);
+}
+
+input.register-form.touched {
+  border-color: var(--header-and-footer-color);
+}
+
+.register-form button {
+  margin: 2em auto;
+  text-shadow: 0 0 0.2em var(--text-headings-color);
+}
+
+div .form-field:last-child {
+  margin-bottom: 2em;
+}
+
+
+.register-form select {
+  color: var(--text-headings-color);
+}
+
+input.register-form.touched {
+  border: 2em solid var(--golden-text);
+}
+
+.register-form label {
+  padding-right: 2em;
+}
+
+.logo-form {
+  position: relative;
+  font-weight: 700;
+  font-size: 2em;
+  color: var(--golden-text);
+  text-shadow: 0 0 0.2em var(--text-headings-color);
+  padding-left: 0.5em;
+}
+
+.form-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em;
+}
+
+.form-field > div {
+  padding: 0.4em;
+}
+
+.form-field > label {
+  color: var(--text-headings-color);
+  font-weight: 100;
+}
+
+.register-form form {
+  padding: 1em;
+}
+
+.register img {
+  width: 100%;
+  height: 10em;
+  object-fit: cover;
+  object-position: 100% 40%;
+  background-color: black;
+  opacity: 0.7;
+}
+
+

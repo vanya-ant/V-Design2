@@ -1,0 +1,44 @@
+import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import { Router } from '@angular/router';
+import {AuthService} from "../../shared/services/auth.service";
+import {ToastrService} from "ngx-toastr";
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
+})
+export class LoginComponent implements OnInit {
+
+  loginForm: FormGroup;
+  // @ts-ignore
+  user: User;
+
+  constructor(private fb: FormBuilder,
+              private auth: AuthService,
+              private router: Router,
+              public toastr: ToastrService) {
+    this.loginForm = this.fb.group({
+      username: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
+    });
+  }
+
+  ngOnInit() {
+    if (this.auth.activeUser) {
+      this.auth.logout();
+    }
+  }
+
+  async login() {
+    try {
+      await this.auth.login(this.loginForm.value.email, this.loginForm.value.password);
+      localStorage.clear();
+      this.toastr.success('Successfully logged out');
+    } catch (error) {
+      this.toastr.error('Error');
+    }
+  }
+
+}

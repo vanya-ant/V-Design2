@@ -1,0 +1,31 @@
+@import '../../../assets/scss/responsive';
+
+.site-title {
+  text-decoration:none;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--header-and-footer-color);
+  color: var(--text-primary-color);
+  padding: 0.5em;
+  position: relative;
+  left: 0;
+  bottom: 0;
+
+  @include bp (mobile)  {
+    display: block;
+    text-align: center;
+  }
+
+  @include bp (phone)  {
+    display: block;
+  }
+}
+
+footer a {
+  color: inherit;
+  padding-right: 1em;
+  text-decoration: none;
+}

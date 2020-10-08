@@ -1,0 +1,72 @@
+.checkbox-password-remember input {
+  transform: translateX(4em);
+  color: var(--text-primary-color);
+}
+
+.checkbox-password-remember input[type='checkbox'] {
+
+}
+
+.checkbox-password-remember label {
+  color: var(--text-primary-color);
+  padding-left: 4em;
+  font-size: 0.3em;
+}
+
+.checkbox-password-remember {
+  display: block;
+  position: relative;
+  padding-left: 2em;
+  margin-bottom: 1em;
+  cursor: pointer;
+  user-select: none;
+  color: var(--text-primary-color);
+  align-self: flex-end;
+}
+
+.checkbox-password-remember input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1.5em;
+  width: 1.5em;
+  background-color: var(--text-primary-color);
+}
+
+.checkbox-password-remember:hover input ~ .checkmark {
+  background-color: var(--text-headings-color);
+}
+
+.checkbox-password-remember input:checked ~ .checkmark {
+  background-color: var(--golden-text);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox-password-remember input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkbox-password-remember .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}

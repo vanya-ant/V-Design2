@@ -1,0 +1,24 @@
+<div class="login">
+  <img src="/assets/img/lock.jpg">
+  <div class="logo-form">Login</div>
+  <div class="login-form">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <div class="form-field">
+        <label class="user" for="login-username"><span class="hidden">Username</span></label>
+        <input formControlName="username" id="login-username" type="text" class="form-input" placeholder="Username" required>
+      </div>
+      <p class="error-message" *ngIf="loginForm.get('username').invalid && loginForm.get('username').touched">Please enter valid username!</p>
+      <div class="form-field">
+        <label class="lock" for="login-password"><span class="hidden">Password</span></label>
+        <input formControlName="password" id="login-password" type="password" class="form-input" placeholder="Password" required minlength="6">
+      </div>
+      <p class="error-message" *ngIf="loginForm.get('password').invalid && loginForm.get('password').touched">Please enter valid password!</p>
+      <a class="page-link-password" routerLink="/forgot-password">Forgot password?</a>
+      <button class="button">
+        Login
+        <div class="button__horizontal"></div>
+        <div class="button__vertical"></div>
+      </button>
+    </form>
+  </div>
+</div>

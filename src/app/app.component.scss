@@ -1,0 +1,16 @@
+body, html {
+  width: 100%;
+  height: 100%;
+}
+
+.page-content {
+  display: flex;
+  max-width: 100%;
+  min-height: 100%;
+  justify-content: center;
+}
+
+.site-header {
+  display:flex;
+  justify-content:space-between;
+}
