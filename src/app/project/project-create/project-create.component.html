@@ -1,1 +1,35 @@
-<p>project-create works!</p>
+<div class="create-project-container">
+  <img src="/assets/img/create.jpg">
+  <div class="create-project">
+    <div class="logo-form">Create project</div>
+    <form [formGroup]="form" (ngSubmit)="createProject(form.value)">
+      <div class="form-field">
+        <label class="title" for="create-title"><span class="hidden">Project title</span></label>
+        <input id="create-title" formControlName="title" value="Project title" placeholder="Project title">
+      </div>
+      <p class="error-message" *ngIf="form.get('title').invalid && form.get('title').touched">Please enter valid title!</p>
+      <div class="form-field">
+        <label class="description" for="create-description"><span class="hidden">Project description</span></label>
+        <textarea rows="4" cols="18" id="create-description" formControlName="description" placeholder="Description"></textarea>
+      </div>
+      <p class="error-message" *ngIf="form.get('description').invalid && form.get('description').touched">Please enter valid description!</p>
+      <div class="form-field">
+        <label class="year" for="create-year"><span class="hidden">Project year</span></label>
+        <input type="number" min="2000" max="2099" step="1" value="2020" id="create-year" formControlName="year"/>
+      </div>
+      <div class="form-field">
+        <label class="year" for="image-Url"><span class="hidden">Project image</span></label>
+        <input id="image-Url" placeholder="Project image url" formControlName="imageUrl">
+      </div>
+      <p class="error-message" *ngIf="form.get('imageUrl').invalid && form.get('imageUrl').touched">Please enter valid imageUrl!</p>
+      <!--      <div class="form-field">
+              <input formControlName="file" type="file" class="ng-file-upload" (submit)="onUploadFinished($event)" placeholder="Upload image" accept="image/*"/>
+            </div>-->
+      <button class="button">
+        Create
+        <div class="button__horizontal"></div>
+        <div class="button__vertical"></div>
+      </button>
+    </form>
+  </div>
+</div>

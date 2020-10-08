@@ -1,1 +1,22 @@
-<p>project-list works!</p>
+<div class="projects-portfolio">
+  <ul class="project-box">
+    <div *ngFor="let project of projects">
+      <li class="project-content">
+        <a [routerLink]="project._id">
+          <h1>{{ project.title }}</h1>
+          <p>{{ project.year }}</p>
+          <p>{{ project.description}}</p>
+        </a>
+        <img src="{{ project.imageUrl }}" class="gallery-img"/>
+        <div *ngIf="project.rating != 0">
+          <div class="rating-list" *ngFor="let i of [].constructor(project.rating)">
+            <i class="fa fa-star"  style="color: var(--golden-text);"></i>
+          </div>
+        </div>
+        <div *ngIf="project.rating == 0">
+          <p>Project not rated yet!</p>
+        </div>
+      </li>
+    </div>
+  </ul>
+</div>

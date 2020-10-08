@@ -1,1 +1,43 @@
-<p>project-calculator works!</p>
+<div class="project-calculator">
+  <img src="/assets/img/calc.jpg"/>
+  <form [formGroup]="projectCalculatorForm">
+    <div class="form-group">
+      <label>Type of property</label>
+      <select formControlName="property">
+        <option>Studio</option>
+        <option>Apartment</option>
+        <option>House</option>
+        <option>Commercial property</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Type of project</label>
+      <select formControlName="project">
+        <option>Basic</option>
+        <option>Full</option>
+        <option>Consultation</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Enter number of bedrooms</label>
+      <input formControlName="bedrooms" type="number" placeholder="Number of bedrooms" min="0" max="1000" step="1"/>
+    </div>
+    <p class="error-message"  *ngIf="projectCalculatorForm.get('bedrooms').invalid && projectCalculatorForm.get('bedrooms').touched">Please enter valid number of bedrooms!</p>
+    <div class="form-group">
+      <label>Enter number of bathrooms</label>
+      <input formControlName="bathrooms" type="number" placeholder="Number of bathrooms" min="1" max="1000" step="1"/>
+    </div>
+    <p class="error-message" *ngIf="projectCalculatorForm.get('bathrooms').invalid && projectCalculatorForm.get('bathrooms').touched">Please enter valid number of bathrooms!</p>
+    <div class="form-group">
+      <label asp-for="HousingArea">Enter housing area /sq.m./</label>
+      <input formControlName="area" type="number" placeholder="Housing area" min="1" max="10000"  step="0.1"/>
+    </div>
+    <p class="error-message" *ngIf="projectCalculatorForm.get('area').invalid && projectCalculatorForm.get('area').touched">Please enter valid housing area!</p>
+    <div class="form-group">
+      <label>Approximate Project Design Expenses</label>
+      <div *ngIf="projectCalculatorForm.valid" class="form-control" style="padding-left: 2em; color: var(--golden-text); font-weight: bold; font-size: large">
+        <h1>{{calculate().toFixed(2)}} lv.</h1>
+      </div>
+    </div>
+  </form>
+</div>
