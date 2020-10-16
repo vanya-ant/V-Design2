@@ -11,7 +11,7 @@ import {AngularFireAuth} from '@angular/fire/auth';
 export class AuthService {
 
   // @ts-ignore
-  user: User;
+  private user: User;
 
   constructor(private afAuth: AngularFireAuth, public  router: Router, public toastr: ToastrService) {
     this.afAuth.authState.subscribe(user => {
@@ -40,6 +40,7 @@ export class AuthService {
       await this.router.navigate(['projects-portfolio']);
       this.toastr.success('Successfully registered!');
     } catch (error) {
+      console.log(error.message);
       this.toastr.error('Error');
     }
   }
@@ -47,6 +48,7 @@ export class AuthService {
   async logout() {
     try {
       await this.afAuth.signOut();
+      localStorage.removeItem('user');
       await this.router.navigate(['/']);
       this.toastr.success('Successfully logged out!');
     } catch (error) {
@@ -62,6 +64,9 @@ export class AuthService {
     } catch (error) {
       this.toastr.error('Error');
     }
+  }
+
+  async setUserData() {
   }
 
   get isLoggedIn(): boolean {

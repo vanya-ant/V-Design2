@@ -27,6 +27,12 @@
         <a class="page-link" routerLink="/" (click)="logout()">Logout</a>
       </div>
     </div>
+    <select class="form-control" #selectedLang (change)="switchLang(selectedLang.value)">
+      <option *ngFor="let language of translate.getLangs()" [value]="language"
+              [selected]="language === translate.currentLang">
+        {{ language }}
+      </option>
+    </select>
   </nav>
 </header>
 <!--

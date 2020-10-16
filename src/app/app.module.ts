@@ -12,16 +12,18 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterModule} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {ToastrModule} from 'ngx-toastr';
 
 import {CoreModule} from './core/core.module';
 import {environment} from '../environments/environment';
 import {AuthModule} from './auth/auth.module';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,8 +44,19 @@ import {AuthModule} from './auth/auth.module';
       preventDuplicates: true,
     }),
     AuthModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: translateLoaderFactory,
+        deps: [HttpClient],
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function translateLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}

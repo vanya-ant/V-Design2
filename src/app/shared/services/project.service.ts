@@ -4,8 +4,6 @@ import {AuthService} from './auth.service';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import firebase from 'firebase';
 
-/*const database = firebase.database();*/
-
 @Injectable({
   providedIn: 'root'
 })
@@ -14,6 +12,8 @@ export class ProjectService {
   projects: IProject[] = [];
   project: IProject;
   private dataStore: any;
+
+  /*const database = firebase.database();*/
 
   constructor(private auth: AuthService) {
   }

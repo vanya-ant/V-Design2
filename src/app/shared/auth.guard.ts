@@ -24,7 +24,7 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const active = this.auth.activeUser();
+    const active = this.auth.activeUser;
     // @ts-ignore
     if (active.data.role === 'Admin' || active.data.role === 'Designer') {
       return true;

@@ -35,18 +35,17 @@
 
 .project-calculator form {
   z-index: 30;
-  margin-bottom: 1em;
+  width: 80%;
+  margin: 0 auto;
   background-color: var(--text-primary-color);
 
   @include bp(tablet) {
-    width: 80%;
     padding-left: 2em;
     padding-right: 2em;
     margin: 0 auto;
   }
 
   @include bp(mobile) {
-    width: 80%;
     padding-left: 1em;
     padding-right: 1em;
     margin: 0 auto;

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {AuthService} from "../../shared/services/auth.service";
-import {Router} from "@angular/router";
-import {ToastrService} from "ngx-toastr";
-import {passwordMatch} from "../../shared/validators";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../../shared/services/auth.service';
+import {Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
+import {passwordMatch} from '../../shared/validators';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +12,7 @@ import {passwordMatch} from "../../shared/validators";
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
-
+  private password: string;
   constructor(fb: FormBuilder,
               private auth: AuthService,
               private router: Router,
@@ -35,24 +35,12 @@ export class RegisterComponent implements OnInit {
 
   async register() {
     const registerObj = this.registerForm.value;
-    registerObj.password = registerObj.passwords.password;
-    delete registerObj.passwords;
-    try {
-      await this.auth.register(registerObj.email, registerObj.password);
-      await this.router.navigate(['projects-portfolio']);
-      this.toastr.success('Successfully registered');
-    } catch (error) {
-      this.toastr.error('Error');
-    }
+    const currentPass = this.registerForm.value.passwords.password;
+    delete this.registerForm.value.passwords;
+    await this.auth.register(registerObj.username, currentPass);
   }
 
   async logout() {
-    try {
-      await this.auth.logout();
-      localStorage.clear();
-      this.toastr.success('Successfully logged out');
-    } catch (error) {
-      this.toastr.error('Error');
-    }
+    await this.auth.logout();
   }
 }

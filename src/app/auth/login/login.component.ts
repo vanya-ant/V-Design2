@@ -32,13 +32,7 @@ export class LoginComponent implements OnInit {
   }
 
   async login() {
-    try {
-      await this.auth.login(this.loginForm.value.email, this.loginForm.value.password);
-      localStorage.clear();
-      this.toastr.success('Successfully logged out');
-    } catch (error) {
-      this.toastr.error('Error');
-    }
+   await this.auth.login(this.loginForm.value.email, this.loginForm.value.password);
   }
 
 }

@@ -68,7 +68,7 @@ input.login-form.touched {
 }
 
 .login img {
-  width: 100%;
+  width: calc(100% - 1em);
   height: 10em;
   object-fit: cover;
   object-position: 100% 25%;
