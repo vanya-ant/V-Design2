@@ -1,25 +1,25 @@
 <header class="site-header">
   <div class=logo>
-    <a class="page-link" routerLink="/"><img src="/assets/img/logo-2.png"></a>
+    <a class="page-link" routerLink=""><img src="/assets/img/logo-2.png"></a>
   </div>
   <nav class="site-nav" id="nav">
     <div class="border-animation"></div>
-    <a class="page-link active" routerLink="/about">About</a>
+    <a class="page-link active" routerLink="/about">{{'NAV.ABOUT' | translate}}</a>
     <div class="border-animation"></div>
-    <a class="page-link" routerLink="/portfolio">Portfolio</a>
+    <a class="page-link" routerLink="/portfolio">{{'NAV.PORTFOLIO' | translate}}</a>
     <div class="border-animation"></div>
-    <a class="page-link" routerLink="/projects-portfolio">Projects</a>
+    <a class="page-link" routerLink="/projects-portfolio">{{'NAV.PROJECTS' | translate}}</a>
     <div class="border-animation"></div>
-    <a class="page-link" routerLink="/project-calculator">Project Calculator</a>
+    <a class="page-link" routerLink="/project-calculator">{{'NAV.PROJECT-CALCULATOR' | translate}}</a>
     <div class="border-animation"></div>
-    <a class="page-link" routerLink="/contacts">Contacts</a>
+    <a class="page-link" routerLink="/contacts">{{'NAV.CONTACTS' | translate}}</a>
     <div *ngIf="isAdmin">
-      <a class="page-link" routerLink="/project-create">Create project</a>
+      <a class="page-link" routerLink="/project-create">{{'NAV.CREATE-PROJECT' | translate}}</a>
     </div>
     <div>
       <div class="site-nav-login-register">
-        <a class="page-link" routerLink="/login">Login</a>
-        <a class="page-link" routerLink="/register">Register</a>
+        <a class="page-link" routerLink="/login">{{'NAV.LOGIN' | translate}}</a>
+        <a class="page-link" routerLink="/register">{{'NAV.REGISTER' | translate}}</a>
       </div>
     </div>
     <div *ngIf="activeUser">

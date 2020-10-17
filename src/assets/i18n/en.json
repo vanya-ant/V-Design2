@@ -1,6 +1,24 @@
 {
   "HOME": {
-    "TITLE": "Simplicity",
-    "SELECT": "Change language"
+    "TITLE": "Simplicity"
+  },
+  "LOGIN": {
+    "TITLE": "Login"
+  },
+  "REGISTER": {
+  "TITLE": "Register"
+  },
+  "NAV": {
+    "ABOUT": "About",
+    "PORTFOLIO": "Portfolio",
+    "PROJECTS": "Projects",
+    "PROJECT-CALCULATOR": "Project-calculator",
+    "CONTACTS": "Contacts",
+    "LOGIN": "Login",
+    "REGISTER": "Register",
+    "CREATE-PROJECT": "Create project"
+  },
+  "ABOUT": {
+    "TITLE": "Interior design"
   }
 }

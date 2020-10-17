@@ -13,7 +13,8 @@ import { PrivacyComponent } from './privacy/privacy/privacy.component';
 import { NotFoundComponent } from './not-found/not-found/not-found.component';
 import { ProjectDetailsComponent } from './project/project-details/project-details.component';
 import { AuthGuard } from './shared/auth.guard';
-import {TranslateModule} from '@ngx-translate/core';
+import {HomeModule} from './home/home.module';
+import {AboutModule} from "./about/about.module";
 
 const routes: Routes = [
   {
@@ -107,7 +108,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule, TranslateModule]
+  exports: [RouterModule]
 })
 
 export class AppRoutingModule { }

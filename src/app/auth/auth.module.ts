@@ -4,8 +4,9 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ContactsComponent } from '../contacts/contacts/contacts.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {RouterModule} from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -15,7 +16,8 @@ import {RouterModule} from '@angular/router';
         CommonModule,
         ReactiveFormsModule,
         FormsModule,
-        RouterModule
+        RouterModule,
+        SharedModule
     ]
 })
 export class AuthModule { }

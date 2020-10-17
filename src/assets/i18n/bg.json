@@ -1,6 +1,24 @@
 {
   "HOME": {
-    "TITLE": "Простотата",
-    "SELECT": "Change language"
+    "TITLE": "Простотата"
+  },
+  "LOGIN": {
+    "TITLE": "Влез"
+  },
+  "REGISTER": {
+    "TITLE": "Регистрирай се"
+  },
+  "NAV": {
+    "ABOUT": "За нас",
+    "PORTFOLIO": "Портфолио",
+    "PROJECTS": "Проекти",
+    "PROJECT-CALCULATOR": "Калкулатор",
+    "CONTACTS": "Контакти",
+    "LOGIN": "Влез",
+    "REGISTER": "Регистрирай се",
+    "CREATE-PROJECT": "Създай проект"
+  },
+  "ABOUT": {
+    "TITLE": "Интериорен дизайн"
   }
 }
