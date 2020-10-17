@@ -4,6 +4,7 @@ import User from 'firebase';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {AngularFireAuth} from '@angular/fire/auth';
+import {reflectTypeEntityToDeclaration} from "@angular/compiler-cli/src/ngtsc/reflection";
 
 @Injectable({
   providedIn: 'root'
@@ -66,9 +67,6 @@ export class AuthService {
     }
   }
 
-  async setUserData() {
-  }
-
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user'));
     return (user !== null);
@@ -76,5 +74,10 @@ export class AuthService {
 
   get activeUser() {
     return JSON.parse(localStorage.getItem('user'));
+  }
+
+  get checkAuthorization(): boolean {
+    if (!this.user) { return false; }
+    return !!this.user.isAuthenticated().isAdmin();
   }
 }

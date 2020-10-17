@@ -30,7 +30,7 @@ export class AuthGuard implements CanActivate {
       return true;
     }
     this.router.navigate(['/login']);
-    this.toastr.error('Please, sign in with correct credentials!');
+    this.toastr.error('Please, sign in with the correct credentials!');
     return false;
   }
 }

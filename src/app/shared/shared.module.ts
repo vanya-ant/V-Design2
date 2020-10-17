@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PasswordsMatchDirective } from './passwords-match.directive';
+import {TranslateModule} from '@ngx-translate/core';
 
 
 
@@ -8,6 +9,9 @@ import { PasswordsMatchDirective } from './passwords-match.directive';
   declarations: [PasswordsMatchDirective],
   imports: [
     CommonModule
+  ],
+  exports: [
+    TranslateModule
   ]
 })
 export class SharedModule { }

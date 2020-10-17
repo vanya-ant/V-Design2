@@ -27,4 +27,12 @@ export class NavigationComponent implements OnInit {
   logout() {
     this.auth.logout();
   }
+
+  get activeUser() {
+    return this.auth.activeUser;
+  }
+
+  get isAdmin() {
+    return this.auth.activeUser && this.auth.activeUser.isAdmin;
+  }
 }

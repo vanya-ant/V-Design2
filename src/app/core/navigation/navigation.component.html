@@ -13,7 +13,7 @@
     <a class="page-link" routerLink="/project-calculator">Project Calculator</a>
     <div class="border-animation"></div>
     <a class="page-link" routerLink="/contacts">Contacts</a>
-    <div>
+    <div *ngIf="isAdmin">
       <a class="page-link" routerLink="/project-create">Create project</a>
     </div>
     <div>
@@ -22,7 +22,7 @@
         <a class="page-link" routerLink="/register">Register</a>
       </div>
     </div>
-    <div>
+    <div *ngIf="activeUser">
       <div class="site-nav-login-register">
         <a class="page-link" routerLink="/" (click)="logout()">Logout</a>
       </div>

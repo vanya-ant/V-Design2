@@ -13,7 +13,7 @@ import { PrivacyComponent } from './privacy/privacy/privacy.component';
 import { NotFoundComponent } from './not-found/not-found/not-found.component';
 import { ProjectDetailsComponent } from './project/project-details/project-details.component';
 import { AuthGuard } from './shared/auth.guard';
-import {TranslateModule} from "@ngx-translate/core";
+import {TranslateModule} from '@ngx-translate/core';
 
 const routes: Routes = [
   {
