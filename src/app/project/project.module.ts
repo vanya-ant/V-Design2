@@ -4,7 +4,7 @@ import { ProjectCreateComponent } from './project-create/project-create.componen
 import { ProjectDetailsComponent } from './project-details/project-details.component';
 import { ProjectListComponent } from './project-list/project-list.component';
 import {RouterModule} from '@angular/router';
-import {ReactiveFormsModule} from "@angular/forms";
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 

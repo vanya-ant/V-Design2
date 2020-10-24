@@ -16,7 +16,7 @@
     <div *ngIf="isAdmin">
       <a class="page-link" routerLink="/project-create">{{'NAV.CREATE-PROJECT' | translate}}</a>
     </div>
-    <div>
+    <div *ngIf="!activeUser">
       <div class="site-nav-login-register">
         <a class="page-link" routerLink="/login">{{'NAV.LOGIN' | translate}}</a>
         <a class="page-link" routerLink="/register">{{'NAV.REGISTER' | translate}}</a>
@@ -24,7 +24,7 @@
     </div>
     <div *ngIf="activeUser">
       <div class="site-nav-login-register">
-        <a class="page-link" routerLink="/" (click)="logout()">Logout</a>
+        <a class="page-link" routerLink="/" (click)="logout()">{{'NAV.LOGOUT' | translate}}</a>
       </div>
     </div>
     <select class="form-control" #selectedLang (change)="switchLang(selectedLang.value)">

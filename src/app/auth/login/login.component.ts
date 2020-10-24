@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
-import {AuthService} from '../../shared/services/auth.service';
-import {ToastrService} from 'ngx-toastr';
+import { AuthService } from '../../shared/services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -12,8 +12,6 @@ import {ToastrService} from 'ngx-toastr';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
-  // @ts-ignore
-  user: User;
 
   constructor(private fb: FormBuilder,
               private auth: AuthService,
@@ -32,6 +30,6 @@ export class LoginComponent implements OnInit {
   }
 
   async login() {
-   await this.auth.login(this.loginForm.value.email, this.loginForm.value.password);
+    await this.auth.login(this.loginForm.value.username, this.loginForm.value.password);
   }
 }

@@ -15,10 +15,31 @@
     "PROJECT-CALCULATOR": "Калкулатор",
     "CONTACTS": "Контакти",
     "LOGIN": "Влез",
+    "LOGOUT": "Излизане",
     "REGISTER": "Регистрирай се",
     "CREATE-PROJECT": "Създай проект"
   },
   "ABOUT": {
-    "TITLE": "Интериорен дизайн"
+    "TITLE": "Интериорен дизайн",
+    "UNDER-TITLE": "Сбъдни мечтите си",
+    "QUOTE": "\"Направете го просто, но значимо\"",
+    "QUOTE-AUTHOR": "-Дон Дрейпър"
+  },
+  "PROJECT-CALCULATOR": {
+    "TYPE": "Вид на обекта",
+    "TYPE_OPTION0": "Студио",
+    "TYPE_OPTION1": "Апартамент",
+    "TYPE_OPTION2": "Къща",
+    "TYPE_OPTION3": "Търговски обект",
+    "TYPE_OPTION4": "Офис",
+    "PROJECT": "Вид на проекта",
+    "PROJECT_OPTION1": "Базов",
+    "PROJECT_OPTION2": "Пълен",
+    "PROJECT_OPTION3": "Консултация",
+    "BEDROOMS": "Брой спални",
+    "BATHROOMS": "Брой бани",
+    "AREA": "Квадратура /кв.м./",
+    "EXPENSES": "Приблизителна цена за проектиране",
+    "CURRENCY": "лв"
   }
 }

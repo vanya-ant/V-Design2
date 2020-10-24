@@ -1,23 +1,21 @@
 import { Injectable } from '@angular/core';
-// @ts-ignore
-import User from 'firebase';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {AngularFireAuth} from '@angular/fire/auth';
-import {reflectTypeEntityToDeclaration} from "@angular/compiler-cli/src/ngtsc/reflection";
+import {User} from 'firebase';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  // @ts-ignore
   private user: User;
 
   constructor(private afAuth: AngularFireAuth, public  router: Router, public toastr: ToastrService) {
     this.afAuth.authState.subscribe(user => {
       if (user) {
         this.user = user;
+        console.log(user);
         localStorage.setItem('user', JSON.stringify(this.user));
       } else {
         localStorage.setItem('user', null);
@@ -78,6 +76,6 @@ export class AuthService {
 
   get checkAuthorization(): boolean {
     if (!this.user) { return false; }
-    return !!this.user.isAuthenticated().isAdmin();
+    return !!this.activeUser.isAuthenticated().isAdmin();
   }
 }

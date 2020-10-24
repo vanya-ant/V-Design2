@@ -2,7 +2,7 @@
   <ul class="project-box">
     <div *ngFor="let project of projects">
       <li class="project-content">
-        <a [routerLink]="project._id">
+        <a [routerLink]="project.id">
           <h1>{{ project.title }}</h1>
           <p>{{ project.year }}</p>
           <p>{{ project.description}}</p>

@@ -1,27 +1,29 @@
 import {Injectable, InjectionToken} from '@angular/core';
 import { IProject } from '../project';
 import {AuthService} from './auth.service';
-import {AngularFirestoreModule} from '@angular/fire/firestore';
-import firebase from 'firebase';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class ProjectService {
-  projects: IProject[] = [];
+  projects: any[] = [];
   project: IProject;
-  private dataStore: any;
 
-  /*const database = firebase.database();*/
-
-  constructor(private auth: AuthService) {
+  constructor(private auth: AuthService, private firestore: AngularFirestore) {
+    this.getAllProjects();
   }
 
   getAllProjects() {
-    this.dataStore.find().toPromise().then((entities) => {
-      entities.forEach(en => this.projects.push(en));
-    });
+    return this.firestore
+      .collection('projects')
+      .get()
+      .subscribe((projects) => {
+        projects.forEach((project) => {
+          this.projects.push(project.data() as {});
+        });
+      });
   }
 
   getProject(id: string) {
@@ -29,16 +31,18 @@ export class ProjectService {
   }
 
   async create(project: IProject) {
-    const createdProject = await this.dataStore.save(project);
+    await this.firestore.collection('projects').add({
+      project
+    });
     this.projects = [];
     this.getAllProjects();
-    return createdProject;
+    return project;
   }
 
   async delete(id: string) {
-    const project = this.projects.find(p => p._id === id);
+    const project = this.projects.find(p => p.i === id);
     if (project) {
-      await this.dataStore.removeById(id);
+      await this.firestore.collection('testCollection').doc(id).delete();
     }
     this.projects = [];
     this.getAllProjects();
@@ -53,7 +57,12 @@ export class ProjectService {
     currentProject.rating = currentProject.rating / 2;
     Math.round(currentProject.rating);
 
-    this.dataStore.update(currentProject);
+    await this.firestore.collection('projects').snapshotChanges()
+      .forEach((changes) => {
+      changes.map((a) => {
+        id = a.payload.doc.id;
+      });
+    });
   }
 
   async uploadFile(file: File, id: string) {

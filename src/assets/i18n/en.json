@@ -15,10 +15,31 @@
     "PROJECT-CALCULATOR": "Project-calculator",
     "CONTACTS": "Contacts",
     "LOGIN": "Login",
+    "LOGOUT": "Logout",
     "REGISTER": "Register",
     "CREATE-PROJECT": "Create project"
   },
   "ABOUT": {
-    "TITLE": "Interior design"
+    "TITLE": "Interior design",
+    "UNDER-TITLE": "Fulfill your dreams",
+    "QUOTE": "\"Make it simple, but significant\"",
+    "QUOTE-AUTHOR": "-Don Draper"
+  },
+  "PROJECT-CALCULATOR": {
+    "TYPE": "Type of property",
+    "TYPE_OPTION0": "Studio",
+    "TYPE_OPTION1": "Apartment",
+    "TYPE_OPTION2": "House",
+    "TYPE_OPTION3": "Commercial property",
+    "TYPE_OPTION4": "Office",
+    "PROJECT": "Type of project",
+    "PROJECT_OPTION1": "Basic",
+    "PROJECT_OPTION2": "Full",
+    "PROJECT_OPTION3": "Consultation",
+    "BEDROOMS": "Number of bedrooms",
+    "BATHROOMS": "Number of bathrooms",
+    "AREA": "Housing area /sq.m./",
+    "EXPENSES": "Approximate project design expenses",
+    "CURRENCY": "BGN"
   }
 }

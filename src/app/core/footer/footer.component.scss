@@ -10,9 +10,8 @@ footer {
   background-color: var(--header-and-footer-color);
   color: var(--text-primary-color);
   padding: 0.5em;
-  position: relative;
-  left: 0;
-  bottom: 0;
+  position: fixed;
+  left: 0 ; right: 0; bottom: 0;
 
   @include bp (mobile)  {
     display: block;

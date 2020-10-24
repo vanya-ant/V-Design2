@@ -2,18 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import {IProject} from '../../shared/project';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ProjectService} from '../../shared/services/project.service';
-import { AuthService } from 'src/app/shared/services/auth.service';
+import {AuthService} from '../../shared/services/auth.service';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
+import * as uuid from 'uuid';
 
 @Component({
-  selector: 'app-project-create',
-  templateUrl: './project-create.component.html',
-  styleUrls: ['./project-create.component.scss']
+  selector: 'app-admin',
+  templateUrl: './admin.component.html',
+  styleUrls: ['./admin.component.scss']
 })
-export class ProjectCreateComponent implements OnInit {
-
-
+export class AdminComponent implements OnInit {
   form: FormGroup;
   urlRegex = '(https?://)?([a-z0-9/.-?-A-Z/&]+)';
   public pictures = [];
@@ -38,6 +37,7 @@ export class ProjectCreateComponent implements OnInit {
   }
 
   async createProject(project: IProject) {
+    project.id = uuid.v4();
     project.title = this.form.value.title;
     project.year = this.form.value.year;
     project.description = this.form.value.description;

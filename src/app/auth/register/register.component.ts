@@ -4,6 +4,7 @@ import {AuthService} from '../../shared/services/auth.service';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {passwordMatch} from '../../shared/validators';
+import firebase from "firebase";
 
 @Component({
   selector: 'app-register',
@@ -34,6 +35,7 @@ export class RegisterComponent implements OnInit {
   }
 
   async register() {
+    const database = firebase.database();
     const registerObj = this.registerForm.value;
     const currentPass = this.registerForm.value.passwords.password;
     delete this.registerForm.value.passwords;

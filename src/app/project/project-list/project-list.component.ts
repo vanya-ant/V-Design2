@@ -10,9 +10,11 @@ import {IProject} from '../../shared/project';
 
 export class ProjectListComponent implements OnInit {
 
-  projects: IProject[] = this.projectService.projects;
+  projects = this.projectService.getAllProjects();
 
   constructor(private projectService: ProjectService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.projects);
+  }
 }
