@@ -1,5 +1,5 @@
-export interface IProject {
-  id: string;
+export class IProject {
+  id?: string;
   title: string;
   description: string;
   year: string;

@@ -1,0 +1,7 @@
+<div class="gallery">
+  <div *ngFor="let project of projects">
+    <figure class="gallery-item-{{project.data().title}}">
+      <img src="{{project.data().imageUrl}}" class="gallery-img" (click)="openImg(project.data().imageUrl)"/>
+    </figure>
+  </div>
+</div>

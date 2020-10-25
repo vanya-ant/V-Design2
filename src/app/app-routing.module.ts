@@ -17,6 +17,7 @@ import { HomeModule } from './home/home.module';
 import { AboutModule } from './about/about.module';
 import {AngularFireAuthGuard} from "@angular/fire/auth-guard";
 import {AdminComponent} from "./admin/admin/admin.component";
+import {ProjectPortfolioComponent} from "./project/project-portfolio/project-portfolio.component";
 
 const routes: Routes = [
   {
@@ -76,7 +77,7 @@ const routes: Routes = [
   },
   {
     path: 'portfolio',
-    component: ProjectListComponent,
+    component: ProjectPortfolioComponent,
     data: {
       isLogged: false
     }

@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ProjectService} from '../../shared/services/project.service';
 import {IProject} from '../../shared/project';
+import {Observable, ObservedValueOf, Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-project-list',
@@ -9,12 +10,15 @@ import {IProject} from '../../shared/project';
 })
 
 export class ProjectListComponent implements OnInit {
+  projects: any;
 
-  projects = this.projectService.getAllProjects();
-
-  constructor(private projectService: ProjectService) { }
+  constructor(private projectService: ProjectService) {
+    this.projectService.getCollection()
+      .then((querySnapshot) => {
+        this.projects = querySnapshot.docs;
+      });
+  }
 
   ngOnInit() {
-    console.log(this.projects);
   }
 }

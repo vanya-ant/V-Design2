@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {IProject} from "../../shared/project";
+import {ProjectService} from "../../shared/services/project.service";
+import {ActivatedRoute, Params, Router} from "@angular/router";
+import {AuthService} from "../../shared/services/auth.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-project-details',
@@ -7,9 +12,45 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectDetailsComponent implements OnInit {
 
-  constructor() { }
+  project: any;
+  stars: number[] = [1, 2, 3, 4, 5];
+  selectedValue: number;
+
+
+  constructor(private projectService: ProjectService,
+              private router: Router,
+              private activatedRoute: ActivatedRoute,
+              private auth: AuthService,
+              private toastr: ToastrService) {
+    this.activatedRoute.params.forEach((params: Params) => {
+      this.project = this.projectService.getProject(this.activatedRoute.snapshot.params.id);
+    });
+  }
 
   ngOnInit(): void {
   }
 
+  isLogged() {
+    return this.auth.activeUser;
+  }
+
+  async countStar(star) {
+    this.selectedValue = star;
+    try {
+      await this.projectService.rate(star, this.project._id);
+      this.toastr.success(`Successfully rated project with ${star} stars!`);
+    } catch (error) {
+      this.toastr.error('Error');
+    }
+  }
+
+  async delete(id: string) {
+    try {
+      await this.projectService.delete(id);
+      await this.router.navigate(['projects-portfolio']);
+      this.toastr.success('Successfully deleted project');
+    } catch (error) {
+      this.toastr.error('Error');
+    }
+  }
 }

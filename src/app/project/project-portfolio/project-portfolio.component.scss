@@ -1,0 +1,42 @@
+@import '../../../assets/scss/responsive';
+
+.gallery{
+  line-height: 0;
+  margin: 0.6em;
+  column-count:         3;
+  column-gap:           0.8em;
+
+  @include bp(mobile) {
+    column-count:         2;
+  }
+
+  @include bp(tablet) {
+    column-count:         2;
+  }
+
+  @include bp(phone) {
+    column-count: 1;
+  }
+}
+
+.gallery figure {
+  padding-bottom: 0.8em;
+}
+
+.gallery-img {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  object-fit:cover;
+  opacity: 0.8;
+  transition: all .2s ease-in-out;
+  background-color: var(--text-primary-color);
+  box-shadow:0 0 0.2em 0.2em rgba(0,0,0,0.42);
+
+  &:hover {
+    transform: scale(1.05);
+    opacity: 1;
+    position: relative;
+    z-index:1;
+  }
+}

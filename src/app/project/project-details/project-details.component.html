@@ -1,1 +1,33 @@
-<p>project-details works!</p>
+<div *ngIf="project">
+  <div class="project-detail">
+    <div>{{project}}</div>
+    <div>
+      <h1>{{ project.data().title }}</h1>
+      <p>{{ project.data().year }}</p>
+      <p>{{ project.data().description }}</p>
+    </div>
+    <img src="{{ project.imageUrl }}" class="gallery-img" />
+    <div *ngIf="isLogged">
+      <div class="project-rating">
+        <p>Rate project</p>
+        <div class="row">
+          <div class="col-sm-12">
+            <ul class="list-inline rating-list"
+                *ngFor="let star of stars" style="display: inline-block" >
+              <li (click)="countStar(star)"
+                  [ngClass]="{'selected': (star <= selectedValue)}">
+                <i class="fa fa-star"></i>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div *ngIf="isLogged" class="delete-button">
+          <a (click)="delete(project.id)">Delete project</a>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!isLogged">
+      <p>Please <a routerLink="/login">Login</a> or <a routerLink="/register">Register</a> to rate project!</p>
+    </div>
+  </div>
+</div>

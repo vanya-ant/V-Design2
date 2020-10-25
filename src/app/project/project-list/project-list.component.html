@@ -3,17 +3,17 @@
     <div *ngFor="let project of projects">
       <li class="project-content">
         <a [routerLink]="project.id">
-          <h1>{{ project.title }}</h1>
-          <p>{{ project.year }}</p>
-          <p>{{ project.description}}</p>
+          <h1>{{ project.data().title }}</h1>
+          <p>{{ project.data().year }}</p>
+          <p>{{ project.data().description}}</p>
         </a>
-        <img src="{{ project.imageUrl }}" class="gallery-img"/>
-        <div *ngIf="project.rating != 0">
-          <div class="rating-list" *ngFor="let i of [].constructor(project.rating)">
+        <img src="{{ project.data().imageUrl }}" class="gallery-img"/>
+        <div *ngIf="project.data().rating != 0">
+          <div class="rating-list" *ngFor="let i of [].constructor(project.data().rating)">
             <i class="fa fa-star"  style="color: var(--golden-text);"></i>
           </div>
         </div>
-        <div *ngIf="project.rating == 0">
+        <div *ngIf="project.data().rating == 0">
           <p>Project not rated yet!</p>
         </div>
       </li>

@@ -1,68 +1,54 @@
 import {Injectable, InjectionToken} from '@angular/core';
 import { IProject } from '../project';
 import {AuthService} from './auth.service';
-import { AngularFirestore } from '@angular/fire/firestore';
+import {AngularFirestore, CollectionReference} from '@angular/fire/firestore';
+import {map} from 'rxjs/operators';
+import {Observable, Subscription} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class ProjectService {
-  projects: any[] = [];
-  project: IProject;
+  projectsCollection: CollectionReference;
 
-  constructor(private auth: AuthService, private firestore: AngularFirestore) {
-    this.getAllProjects();
+  constructor(private auth: AuthService, private db: AngularFirestore) {
+    this.projectsCollection = db.collection<IProject>('projects').ref;
   }
 
-  getAllProjects() {
-    return this.firestore
-      .collection('projects')
-      .get()
-      .subscribe((projects) => {
-        projects.forEach((project) => {
-          this.projects.push(project.data() as {});
-        });
-      });
+  getCollection() {
+    return this.projectsCollection.get();
   }
 
   getProject(id: string) {
-    return this.projects.find(project => project._id === id);
+    return this.projectsCollection.doc(id).get();
   }
 
   async create(project: IProject) {
-    await this.firestore.collection('projects').add({
-      project
-    });
-    this.projects = [];
-    this.getAllProjects();
-    return project;
+    return this.projectsCollection.doc(project.id).set(project);
   }
 
   async delete(id: string) {
-    const project = this.projects.find(p => p.i === id);
-    if (project) {
-      await this.firestore.collection('testCollection').doc(id).delete();
-    }
-    this.projects = [];
-    this.getAllProjects();
+    await this.projectsCollection.doc(id).delete();
   }
 
-  async rate(star, id: string) {
-    const currentProject = await this.getProject(id);
-    if (currentProject.rating === 0) {
-      currentProject.rating += star;
+  async rate(star, project: IProject) {
+/*    const currentProject = this.getProject(id);*/
+    if (project.rating === 0) {
+      project.rating += star;
     }
-    currentProject.rating += star;
-    currentProject.rating = currentProject.rating / 2;
-    Math.round(currentProject.rating);
+    project.rating += star;
+    project.rating = project.rating / 2;
+    Math.round(project.rating);
 
-    await this.firestore.collection('projects').snapshotChanges()
+
+
+  /*  await this.db.collection('projects').snapshotChanges()
       .forEach((changes) => {
       changes.map((a) => {
         id = a.payload.doc.id;
       });
-    });
+    });*/
   }
 
   async uploadFile(file: File, id: string) {

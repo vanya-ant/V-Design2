@@ -1,0 +1,67 @@
+@import '../../../assets/scss/responsive';
+
+.project-detail {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  border: 3px solid var(--text-primary-color);
+  box-shadow: 3px 3px 8px 0 rgba(0,0,0,0.3);
+  padding: 0.5em;
+  color: var(--text-headings-color);
+}
+
+.project-detail:hover {
+  cursor: pointer;
+}
+
+.project-detail img{
+  width: 100%;
+  height: auto;
+  border-radius: 0.2em;
+}
+
+.project-detail p {
+  padding: 1em;
+}
+
+.project-detail h1 {
+  padding: 1em;
+  border-bottom: 0.1em solid var(--golden-text);
+  text-shadow: 0 0 0.2em var(--text-primary-color);
+}
+
+.project-rating {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1em;
+  color: var(--text-headings-color);
+}
+.rating-list li {
+  float: right;
+  color: var(--text-headings-color);
+  padding: 10px 5px;
+
+}
+
+.rating-list li:hover,
+.rating-list li:hover ~ li, .rating-list li.selected {
+  color: var(--golden-text);
+  cursor: pointer;
+}
+
+.rating-list {
+  display: inline-block;
+  list-style: none;
+}
+
+.delete-button a{
+  background-color: red;
+  border-radius: 0.2em;
+  color: white;
+  padding: 0.5em;
+  justify-self: right;
+}
+
+.delete-button a:hover {
+  cursor: pointer;
+}
