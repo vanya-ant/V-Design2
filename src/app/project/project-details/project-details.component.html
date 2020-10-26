@@ -1,10 +1,9 @@
 <div *ngIf="project">
   <div class="project-detail">
-    <div>{{project}}</div>
     <div>
-      <h1>{{ project.data().title }}</h1>
-      <p>{{ project.data().year }}</p>
-      <p>{{ project.data().description }}</p>
+      <h1>{{ project.title }}</h1>
+      <p>{{ project.year }}</p>
+      <p>{{ project.description }}</p>
     </div>
     <img src="{{ project.imageUrl }}" class="gallery-img" />
     <div *ngIf="isLogged">

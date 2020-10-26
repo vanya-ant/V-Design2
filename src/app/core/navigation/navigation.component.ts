@@ -36,10 +36,8 @@ export class NavigationComponent implements OnInit {
     return this.auth.activeUser;
   }
 
-  get isAdmin() {
-    if (this.auth.activeUser) {
-      return this.auth.activeUser.isAdmin;
-    }
-    return false;
+  isAdmin() {
+    // return true;
+    return this.auth.isAdmin;
   }
 }

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {IProject} from "../../shared/project";
-import {ProjectService} from "../../shared/services/project.service";
-import {ActivatedRoute, Params, Router} from "@angular/router";
-import {AuthService} from "../../shared/services/auth.service";
-import {ToastrService} from "ngx-toastr";
+import {ProjectService} from '../../shared/services/project.service';
+import {ActivatedRoute, Params, Router} from '@angular/router';
+import {AuthService} from '../../shared/services/auth.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-project-details',
@@ -23,7 +22,8 @@ export class ProjectDetailsComponent implements OnInit {
               private auth: AuthService,
               private toastr: ToastrService) {
     this.activatedRoute.params.forEach((params: Params) => {
-      this.project = this.projectService.getProject(this.activatedRoute.snapshot.params.id);
+      this.projectService.getProject(this.activatedRoute.snapshot.params.id)
+        .then((data) => this.project = data.data());
     });
   }
 

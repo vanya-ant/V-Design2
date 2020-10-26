@@ -1,13 +1,18 @@
 import firebase from 'firebase';
 
 export interface Roles{
-  subscriber?: boolean;
-  editor?: boolean;
   admin?: boolean;
 }
 
-export interface User extends firebase.User {
+// @ts-ignore
+export class User implements firebase.User {
   uid: string;
   email: string;
-  roles: Roles;
+  role: string;
+
+  constructor(uid: string, email: string, username: string, imageUrl: string){
+    this.uid = uid;
+    this.email = email;
+    this.role = 'user';
+  }
 }

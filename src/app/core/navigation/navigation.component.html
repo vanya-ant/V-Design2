@@ -13,7 +13,7 @@
     <a class="page-link" routerLink="/project-calculator">{{'NAV.PROJECT-CALCULATOR' | translate}}</a>
     <div class="border-animation"></div>
     <a class="page-link" routerLink="/contacts">{{'NAV.CONTACTS' | translate}}</a>
-    <div *ngIf="isAdmin">
+    <div *ngIf="isAdmin()">
       <a class="page-link" routerLink="/project-create">{{'NAV.CREATE-PROJECT' | translate}}</a>
     </div>
     <div *ngIf="!activeUser">
