@@ -1,6 +1,6 @@
 html, body {
-  width: 100%;
-  height: calc(100% - 4.9em);
+  max-width: 100%;
+  min-height: 100%;
 }
 
 .page-content {

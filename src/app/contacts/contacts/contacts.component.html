@@ -9,19 +9,19 @@
         <li><i class="fab fa-pinterest-square"></i>VDesign</li>
         <li><i class="fab fa-instagram"></i>VDesign-pro</li>
         <li><i class="fab fa-houzz"></i>VDesign</li>
-        <li><i class="fas fa-map-marker-alt"></i>13 Kukuvitza Str, Sofia, Bugaria</li>
+        <li><i class="fas fa-map-marker-alt"></i>{{'CONTACTS.ADDRESS' | translate}}</li>
       </ul>
     </div>
     <div class="contact-form">
       <form #contactForm="ngForm">
-        <input #firstNameInput="ngModel" ngModel name="firstName" type="text" placeholder="First name" required minlength="2"/>
+        <input #firstNameInput="ngModel" ngModel name="firstName" type="text" placeholder="{{'CONTACTS.FORM-FIRST-NAME' | translate}}" required minlength="2"/>
         <p class="error-message" *ngIf="firstNameInput.invalid && firstNameInput.touched">Please enter valid first name!</p>
-        <input #lastNameInput="ngModel" ngModel name="lastName" type="text" placeholder="Last name" required minlength="2"/>
+        <input #lastNameInput="ngModel" ngModel name="lastName" type="text" placeholder="{{'CONTACTS.FORM-LAST-NAME' | translate}}" required minlength="2"/>
         <p class="error-message" *ngIf="lastNameInput.invalid && lastNameInput.touched">Please enter valid last name!</p>
         <input #emailInput="ngModel" ngModel name="email" type="email" placeholder="Email" pattern="^([a-zA-Z0-9._-]{4,}@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]{2,})$" required/>
         <p class="error-message" *ngIf="emailInput.invalid && emailInput.touched">Please enter valid email!</p>
-        <input #subjectInput="ngModel" ngModel name="subject" type="text" placeholder="Subject" minlength="2"/>
-        <textarea #messageInput="ngModel" ngModel name="message" placeholder="Message"  minlength="10" required></textarea>
+        <input #subjectInput="ngModel" ngModel name="subject" type="text" placeholder="{{'CONTACTS.FORM-SUBJECT' | translate}}" minlength="2"/>
+        <textarea #messageInput="ngModel" ngModel name="message" placeholder="{{'CONTACTS.FORM-MESSAGE' | translate}}"  minlength="10" required></textarea>
         <p class="error-message" *ngIf="messageInput.invalid && messageInput.touched">Please enter valid message!</p>
         <button class="button">
           Send

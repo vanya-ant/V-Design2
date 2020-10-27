@@ -1,6 +1,12 @@
 {
   "HOME": {
-    "TITLE": "Simplicity"
+    "TITLE1": "Simplicity",
+    "UNDER-TITLE": "Is the true meaning of happiness",
+    "TITLE2": "Wellcome",
+    "VDESIGN": "To V-Design",
+    "P-1": "Please, have a look at our portfolio",
+    "BUTTON1": "Portfolio",
+    "BUTTON2": "Project calculator"
   },
   "LOGIN": {
     "TITLE": "Login"
@@ -20,10 +26,27 @@
     "CREATE-PROJECT": "Create project"
   },
   "ABOUT": {
-    "TITLE": "Interior design",
-    "UNDER-TITLE": "Fulfill your dreams",
+    "TITLE1": "Interior design",
+    "UNDER-TITLE1": "Fulfill your dreams",
     "QUOTE": "\"Make it simple, but significant\"",
-    "QUOTE-AUTHOR": "-Don Draper"
+    "QUOTE-AUTHOR": "-Don Draper",
+    "P-1-1": "We have been in this business long enough to know that each and every project is unique, and can tailor any of our packages below to meet individual requirements.",
+    "P-1-2": "Providing input and advice for all phases from initial planning, right through to design details such as furniture layouts, colour schemes, bespoke joinery, specification of finishes, managing contractors, sourcing, and installation, we offer a range of services to suit every type of project and budget.",
+
+    "TITLE2": "Design only",
+    "UNDER-TITLE2": "Need help?",
+    "P-2-1": "Would you like to utilise the expertise, creativity and know-how of an interior designer, but manage the project and deal with contractors yourself?",
+    "P-2-2": "Whether you have one room that needs redecorating or you have a full-scale renovation on your hands, we can help.",
+    "P-2-3": "After an in-depth consultation we will supply a full-colour bespoke document detailing everything covered in the consultation. This will outline details and recommendations for colour scheme, spatial planning, furniture layout, lighting, furniture, soft furnishings, and accessories. Included are images and full details of each item including price, samples, and trade discount where applicable.",
+    "P-2-4": "You can then proceed with the reassurance that you are implementing a completely co-ordinated scheme that works both aesthetically and practically, avoiding expensive mistakes.",
+
+    "TITLE3": "Design and Installation",
+    "P-3-1": "This service extends from the design-only package to include undertaking the sourcing and installation of the recommendations we’ve presented after your bespoke consultation.",
+    "P-3-2": "Ideal if you are a landlord, developer, or private owner preparing a property for sale or rent, or just simply too busy to furnish and dress your own home to a finished standard within a reasonable time-frame.",
+
+    "TITLE4": "Design and Management",
+    "P-4-1": "This full service is for clients who require a complete turnkey service from start to finish.",
+    "P-4-2": "We will provide a complete interior design service from initial consultation to final installation. The perfect package for the client who wants the full service managed on their behalf."
   },
   "PROJECT-CALCULATOR": {
     "TYPE": "Type of property",
@@ -41,5 +64,12 @@
     "AREA": "Housing area /sq.m./",
     "EXPENSES": "Approximate project design expenses",
     "CURRENCY": "BGN"
+  },
+  "CONTACTS": {
+    "ADDRESS": "98 Ovcho pole Str, Sofia 1303, Bulgaria",
+    "FORM-FIRST-NAME": "First name",
+    "FORM-LAST-NAME": "Last name",
+    "FORM-SUBJECT": "Subject",
+    "FORM-MESSAGE": "Message"
   }
 }
