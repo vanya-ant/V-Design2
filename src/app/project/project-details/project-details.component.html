@@ -6,7 +6,7 @@
       <p>{{ project.description }}</p>
     </div>
     <img src="{{ project.imageUrl }}" class="gallery-img" />
-    <div *ngIf="isLogged">
+    <div *ngIf="isLogged()">
       <div class="project-rating">
         <p>Rate project</p>
         <div class="row">
@@ -20,12 +20,12 @@
             </ul>
           </div>
         </div>
-        <div *ngIf="isLogged" class="delete-button">
+        <div *ngIf="isLogged() && isAdmin()" class="delete-button">
           <a (click)="delete(project.id)">Delete project</a>
         </div>
       </div>
     </div>
-    <div *ngIf="!isLogged">
+    <div *ngIf="!isLogged()">
       <p>Please <a routerLink="/login">Login</a> or <a routerLink="/register">Register</a> to rate project!</p>
     </div>
   </div>

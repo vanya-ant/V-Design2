@@ -13,11 +13,8 @@ import { PrivacyComponent } from './privacy/privacy/privacy.component';
 import { NotFoundComponent } from './not-found/not-found/not-found.component';
 import { ProjectDetailsComponent } from './project/project-details/project-details.component';
 import { AuthGuard } from './shared/auth.guard';
-import { HomeModule } from './home/home.module';
-import { AboutModule } from './about/about.module';
-import {AngularFireAuthGuard} from "@angular/fire/auth-guard";
-import {AdminComponent} from "./admin/admin/admin.component";
-import {ProjectPortfolioComponent} from "./project/project-portfolio/project-portfolio.component";
+import { ProjectPortfolioComponent } from './project/project-portfolio/project-portfolio.component';
+import {AdminGuard} from "./shared/services/admin.guard";
 
 const routes: Routes = [
   {
@@ -84,11 +81,11 @@ const routes: Routes = [
   },
   {
     path: 'project-create',
-    component: AdminComponent,
-    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
-    canActivate: [AuthGuard],
+    component: ProjectCreateComponent,
+    loadChildren: () => import('./project/project.module').then(m => m.ProjectModule),
+    canActivate: [AdminGuard],
     data: {
-      isLogged: true
+      isAdmin: true
     }
   },
   {

@@ -2,8 +2,7 @@ import {Injectable, InjectionToken} from '@angular/core';
 import { IProject } from '../project';
 import {AuthService} from './auth.service';
 import {AngularFirestore, CollectionReference} from '@angular/fire/firestore';
-import {map} from 'rxjs/operators';
-import {Observable, Subscription} from 'rxjs';
+import firebase from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -47,18 +46,17 @@ export class ProjectService {
   async uploadFile(file: File, id: string) {
     try {
       const metadata = {
-        _filename: file.name,
+        filename: file.name,
         mimeType: file.type,
         size: file.size,
-        _public: true,
+        public: true,
         projectId: id,
       };
-/*      var storageRef = firebase.storage().ref();
-      ref.put(file).then(function(snapshot) {
-        console.log('Uploaded a blob or file!');
-      });*/
+      const storageRef = firebase.storage().ref();
+      const downloadUrl = storageRef.child('images/' + file.name).put(file);
+      console.log(downloadUrl);
     } catch (e) {
-      console.log(e);
+      console.log(e.message);
     }
   }
 }

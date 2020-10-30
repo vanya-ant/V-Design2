@@ -5,6 +5,7 @@ import {ProjectService} from '../../shared/services/project.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
+import * as uuid from 'uuid';
 
 @Component({
   selector: 'app-project-create',
@@ -13,10 +14,10 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class ProjectCreateComponent implements OnInit {
 
-
   form: FormGroup;
   urlRegex = '(https?://)?([a-z0-9/.-?-A-Z/&]+)';
   public pictures = [];
+  file: File;
 
   constructor( private fb: FormBuilder,
                private projectService: ProjectService,
@@ -38,6 +39,7 @@ export class ProjectCreateComponent implements OnInit {
   }
 
   async createProject(project: IProject) {
+    project.id = uuid.v4();
     project.title = this.form.value.title;
     project.year = this.form.value.year;
     project.description = this.form.value.description;
@@ -45,13 +47,13 @@ export class ProjectCreateComponent implements OnInit {
     project.rating = 0;
 
     const createdProject = await this.projectService.create(project);
-    const uploadedFile = await this.projectService.uploadFile(this.pictures[0], project.id);
+    const uploadedFile = await this.projectService.uploadFile(this.file, project.id);
 
     await this.router.navigate(['projects-portfolio']);
     this.toastr.success('Successfully created project');
   }
 
-  onUploadFinished(event) {
-    this.pictures.push(event.file);
+  onFileSelected(event) {
+   this.file = event.target.files[0];
   }
 }

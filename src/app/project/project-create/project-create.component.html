@@ -23,7 +23,7 @@
       </div>
       <p class="error-message" *ngIf="form.get('imageUrl').invalid && form.get('imageUrl').touched">Please enter valid imageUrl!</p>
             <div class="form-field">
-              <input formControlName="file" type="file" class="ng-file-upload" (submit)="onUploadFinished($event)" placeholder="Upload image" accept="image/*"/>
+              <input formControlName="file" type="file" class="ng-file-upload" (change)="onFileSelected($event)" placeholder="Upload image" accept="image/*"/>
             </div>
       <button class="button">
         Create

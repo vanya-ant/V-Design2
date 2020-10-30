@@ -5,7 +5,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import firebase, { User } from 'firebase';
 import { HttpClient } from '@angular/common/http';
 import {AngularFirestore, CollectionReference} from '@angular/fire/firestore';
-import * as admin from 'firebase-admin';
+import {environment} from '../../../environments/environment';
 
 const baseUrl = 'https://v-design-5.firebaseio.com';
 
@@ -18,7 +18,7 @@ export class AuthService {
   isAdmin = false;
   token: string;
   userStatus: string;
-  private users: User[] = [];
+  private adminEmail = 'vanyad@gmail.com';
 
   usersCollection: CollectionReference;
 
@@ -43,12 +43,12 @@ export class AuthService {
   }
 
   async login(email: string, password: string) {
-    /*    admin.auth().setCustomUserClaims('vXmTMhsNsCT2QjPrOhUdMaC1CeA2', {admin: true}).then(() => {
-          // The new custom claims will propagate to the user's ID token the
-          // next time a new one is issued.
-        });*/
     try {
-      await this.afAuth.signInWithEmailAndPassword(email, password);
+      await this.afAuth.signInWithEmailAndPassword(email, password).then( user => {
+        if (this.user.email === this.adminEmail) {
+          this.isAdmin = true;
+        }
+      });
       await this.router.navigate(['projects-portfolio']);
       this.toastr.success('Successfully logged in!');
     } catch (error) {
@@ -71,6 +71,7 @@ export class AuthService {
     try {
       await this.afAuth.signOut();
       localStorage.removeItem('user');
+      this.isAdmin = false;
       await this.router.navigate(['/']);
       this.toastr.success('Successfully logged out!');
     } catch (error) {
@@ -104,15 +105,6 @@ export class AuthService {
 
   getById(id: string) {
     return this.http.get<User>(`${baseUrl}/${id}/.json`);
-  }
-
-  isAdminUser(id: string) {
-    this.getById(id).subscribe(
-      (data) => {
-        // @ts-ignore
-        this.isAdmin = data.role === 'admin';
-      }
-    );
   }
 
   getToken() {
