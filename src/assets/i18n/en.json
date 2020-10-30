@@ -1,7 +1,7 @@
 {
   "HOME": {
     "TITLE1": "Simplicity",
-    "UNDER-TITLE": "Is the true meaning of happiness",
+    "UNDER-TITLE": "is the true meaning of happiness",
     "TITLE2": "Wellcome",
     "VDESIGN": "To V-Design",
     "P-1": "Please, have a look at our portfolio",
@@ -70,6 +70,10 @@
     "FORM-FIRST-NAME": "First name",
     "FORM-LAST-NAME": "Last name",
     "FORM-SUBJECT": "Subject",
-    "FORM-MESSAGE": "Message"
+    "FORM-MESSAGE": "Message",
+    "BUTTON": "Send"
+  },
+  "PROJECT": {
+    "TITLE": "{{value}}"
   }
 }

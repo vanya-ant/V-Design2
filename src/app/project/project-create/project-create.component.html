@@ -22,9 +22,9 @@
         <input id="image-Url" placeholder="Project image url" formControlName="imageUrl">
       </div>
       <p class="error-message" *ngIf="form.get('imageUrl').invalid && form.get('imageUrl').touched">Please enter valid imageUrl!</p>
-      <!--      <div class="form-field">
+            <div class="form-field">
               <input formControlName="file" type="file" class="ng-file-upload" (submit)="onUploadFinished($event)" placeholder="Upload image" accept="image/*"/>
-            </div>-->
+            </div>
       <button class="button">
         Create
         <div class="button__horizontal"></div>

@@ -32,7 +32,7 @@ export class ProjectService {
     await this.projectsCollection.doc(id).delete();
   }
 
-  async rate(star, project: IProject) {
+  async rate(star, project: any) {
 /*    const currentProject = this.getProject(id);*/
     if (project.rating === 0) {
       project.rating += star;
@@ -41,14 +41,7 @@ export class ProjectService {
     project.rating = project.rating / 2;
     Math.round(project.rating);
 
-
-
-  /*  await this.db.collection('projects').snapshotChanges()
-      .forEach((changes) => {
-      changes.map((a) => {
-        id = a.payload.doc.id;
-      });
-    });*/
+    await this.db.collection('projects').doc(project.id).update({rating: project.rating});
   }
 
   async uploadFile(file: File, id: string) {
@@ -60,7 +53,10 @@ export class ProjectService {
         _public: true,
         projectId: id,
       };
-      /*await this.fileService.upload(file, metadata);*/
+/*      var storageRef = firebase.storage().ref();
+      ref.put(file).then(function(snapshot) {
+        console.log('Uploaded a blob or file!');
+      });*/
     } catch (e) {
       console.log(e);
     }

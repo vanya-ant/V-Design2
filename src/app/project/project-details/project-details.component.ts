@@ -3,6 +3,8 @@ import {ProjectService} from '../../shared/services/project.service';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {AuthService} from '../../shared/services/auth.service';
 import {ToastrService} from 'ngx-toastr';
+import {templateJitUrl} from "@angular/compiler";
+import {IProject} from "../../shared/project";
 
 @Component({
   selector: 'app-project-details',
@@ -14,7 +16,6 @@ export class ProjectDetailsComponent implements OnInit {
   project: any;
   stars: number[] = [1, 2, 3, 4, 5];
   selectedValue: number;
-
 
   constructor(private projectService: ProjectService,
               private router: Router,
@@ -37,10 +38,10 @@ export class ProjectDetailsComponent implements OnInit {
   async countStar(star) {
     this.selectedValue = star;
     try {
-      await this.projectService.rate(star, this.project._id);
+      await this.projectService.rate(star, this.project);
       this.toastr.success(`Successfully rated project with ${star} stars!`);
     } catch (error) {
-      this.toastr.error('Error');
+      this.toastr.error(error.message);
     }
   }
 

@@ -1,7 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ProjectService} from '../../shared/services/project.service';
-import {IProject} from '../../shared/project';
-import {Observable, ObservedValueOf, Subscription} from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-project-list',
@@ -11,8 +10,9 @@ import {Observable, ObservedValueOf, Subscription} from 'rxjs';
 
 export class ProjectListComponent implements OnInit {
   projects: any;
+  title: string;
 
-  constructor(private projectService: ProjectService) {
+  constructor(private projectService: ProjectService, private translateService: TranslateService) {
     this.projectService.getCollection()
       .then((querySnapshot) => {
         this.projects = querySnapshot.docs;

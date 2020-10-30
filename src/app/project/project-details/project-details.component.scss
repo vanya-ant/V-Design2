@@ -2,11 +2,11 @@
 
 .project-detail {
   margin-top: 0.5em;
-  margin-bottom: 0.5em;
+  margin-bottom: 3em;
   border: 3px solid var(--text-primary-color);
   box-shadow: 3px 3px 8px 0 rgba(0,0,0,0.3);
-  padding: 0.5em;
   color: var(--text-headings-color);
+  padding: 1em;
 }
 
 .project-detail:hover {

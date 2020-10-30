@@ -6,6 +6,7 @@ import { ProjectListComponent } from './project-list/project-list.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProjectPortfolioComponent } from './project-portfolio/project-portfolio.component';
+import {SharedModule} from '../shared/shared.module';
 
 
 
@@ -14,7 +15,8 @@ import { ProjectPortfolioComponent } from './project-portfolio/project-portfolio
     imports: [
         CommonModule,
         RouterModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        SharedModule
     ]
 })
 export class ProjectModule { }
