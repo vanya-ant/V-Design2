@@ -12,15 +12,16 @@ import { AboutComponent } from './about/about/about.component';
 import { PrivacyComponent } from './privacy/privacy/privacy.component';
 import { NotFoundComponent } from './not-found/not-found/not-found.component';
 import { ProjectDetailsComponent } from './project/project-details/project-details.component';
-import { AuthGuard } from './shared/auth.guard';
 import { ProjectPortfolioComponent } from './project/project-portfolio/project-portfolio.component';
-import {AdminGuard} from "./shared/services/admin.guard";
+import {AdminGuard} from './shared/services/admin.guard';
+import { HomeModule } from './home/home.module';
+import { AboutModule } from './about/about.module';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: HomeComponent,
+    component: HomeComponent
   },
   {
     path: 'login',
@@ -90,7 +91,7 @@ const routes: Routes = [
   },
   {
     path: 'about',
-    component: AboutComponent,
+    component: AboutComponent
   },
   {
     path: 'forgot-password',

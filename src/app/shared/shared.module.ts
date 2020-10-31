@@ -6,7 +6,8 @@ import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   declarations: [PasswordsMatchDirective],
   imports: [
-    CommonModule
+    CommonModule,
+    TranslateModule
   ],
   exports: [
     TranslateModule

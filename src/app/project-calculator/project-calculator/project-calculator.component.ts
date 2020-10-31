@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ProjectCalculatorService} from '../../shared/services/project-calculator.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ProjectCalculatorService } from '../../shared/services/project-calculator.service';
 
 @Component({
   selector: 'app-project-calculator',

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from '../../shared/services/auth.service';
-import {Router} from '@angular/router';
-import {ToastrService} from 'ngx-toastr';
-import {passwordMatch} from '../../shared/validators';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../shared/services/auth.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { passwordMatch } from '../../shared/validators';
 import firebase from 'firebase';
 
 @Component({
