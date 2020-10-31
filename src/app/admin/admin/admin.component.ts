@@ -44,7 +44,7 @@ export class AdminComponent implements OnInit {
     project.imageUrl = this.form.value.imageUrl;
     project.rating = 0;
 
-    const createdProject = await this.projectService.create(project);
+  /*  const createdProject = await this.projectService.create(project, file);*/
     const uploadedFile = await this.projectService.uploadFile(this.pictures[0],  project.id);
 
     await this.router.navigate(['projects-portfolio']);

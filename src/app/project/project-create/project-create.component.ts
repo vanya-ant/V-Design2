@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import * as uuid from 'uuid';
+import firebase from 'firebase';
 
 @Component({
   selector: 'app-project-create',
@@ -16,7 +17,6 @@ export class ProjectCreateComponent implements OnInit {
 
   form: FormGroup;
   urlRegex = '(https?://)?([a-z0-9/.-?-A-Z/&]+)';
-  public pictures = [];
   file: File;
 
   constructor( private fb: FormBuilder,
@@ -29,7 +29,7 @@ export class ProjectCreateComponent implements OnInit {
       author: ['', [Validators.required]],
       description: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(1000)]],
       year: ['', [Validators.required]],
-      imageUrl: ['', [Validators.required, Validators.pattern(this.urlRegex)]],
+/*      imageUrl: ['', [Validators.required, Validators.pattern(this.urlRegex)]],*/
       rating: [0],
       file: ['']
     });
@@ -43,11 +43,13 @@ export class ProjectCreateComponent implements OnInit {
     project.title = this.form.value.title;
     project.year = this.form.value.year;
     project.description = this.form.value.description;
-    project.imageUrl = this.form.value.imageUrl;
     project.rating = 0;
 
+    await this.projectService.uploadFile(this.file).then(() => {
+      project.imageUrl = this.projectService.downloadUrl;
+    });
+
     const createdProject = await this.projectService.create(project);
-    const uploadedFile = await this.projectService.uploadFile(this.file, project.id);
 
     await this.router.navigate(['projects-portfolio']);
     this.toastr.success('Successfully created project');

@@ -17,11 +17,11 @@
         <label class="year" for="create-year"><span class="hidden">Project year</span></label>
         <input type="number" min="2000" max="2099" step="1" value="2020" id="create-year" formControlName="year"/>
       </div>
-      <div class="form-field">
+<!--      <div class="form-field">
         <label class="year" for="image-Url"><span class="hidden">Project image</span></label>
         <input id="image-Url" placeholder="Project image url" formControlName="imageUrl">
-      </div>
-      <p class="error-message" *ngIf="form.get('imageUrl').invalid && form.get('imageUrl').touched">Please enter valid imageUrl!</p>
+      </div>-->
+<!--      <p class="error-message" *ngIf="form.get('imageUrl').invalid && form.get('imageUrl').touched">Please enter valid imageUrl!</p>-->
             <div class="form-field">
               <input formControlName="file" type="file" class="ng-file-upload" (change)="onFileSelected($event)" placeholder="Upload image" accept="image/*"/>
             </div>

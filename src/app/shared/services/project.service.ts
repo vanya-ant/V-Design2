@@ -1,8 +1,11 @@
-import {Injectable, InjectionToken} from '@angular/core';
-import { IProject } from '../project';
+import {Injectable} from '@angular/core';
+import {IProject} from '../project';
 import {AuthService} from './auth.service';
 import {AngularFirestore, CollectionReference} from '@angular/fire/firestore';
+import {AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask} from '@angular/fire/storage';
+import * as uuid from 'uuid';
 import firebase from 'firebase';
+import {templateJitUrl} from "@angular/compiler";
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +13,11 @@ import firebase from 'firebase';
 
 export class ProjectService {
   projectsCollection: CollectionReference;
+  ref: AngularFireStorageReference;
+  task: AngularFireUploadTask;
+  downloadUrl: string;
 
-  constructor(private auth: AuthService, private db: AngularFirestore) {
+  constructor(private auth: AuthService, private db: AngularFirestore, private afStorage: AngularFireStorage) {
     this.projectsCollection = db.collection<IProject>('projects').ref;
   }
 
@@ -32,7 +38,6 @@ export class ProjectService {
   }
 
   async rate(star, project: any) {
-/*    const currentProject = this.getProject(id);*/
     if (project.rating === 0) {
       project.rating += star;
     }
@@ -43,20 +48,13 @@ export class ProjectService {
     await this.db.collection('projects').doc(project.id).update({rating: project.rating});
   }
 
-  async uploadFile(file: File, id: string) {
-    try {
-      const metadata = {
-        filename: file.name,
-        mimeType: file.type,
-        size: file.size,
-        public: true,
-        projectId: id,
-      };
-      const storageRef = firebase.storage().ref();
-      const downloadUrl = storageRef.child('images/' + file.name).put(file);
-      console.log(downloadUrl);
-    } catch (e) {
-      console.log(e.message);
-    }
+  async uploadFile(file: File) {
+     const storageRef = firebase.storage().ref();
+     const uploadTask = storageRef.child('images/' + file.name).put(file);
+     uploadTask.snapshot.ref.getDownloadURL().then((url) => {
+      console.log('File available at', url);
+      this.downloadUrl = url;
+      console.log(this.downloadUrl);
+    });
   }
 }
