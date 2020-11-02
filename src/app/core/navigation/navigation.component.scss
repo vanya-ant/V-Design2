@@ -42,6 +42,7 @@
 .site-nav {
   display:flex;
   justify-content:space-evenly;
+  padding-right: 0.5em;
 
   @include bp (mobile)  {
     height: auto;
@@ -160,4 +161,9 @@ footer a {
 .logged {
   padding-left: 1em;
   padding-top: 0.5em;
+}
+
+#lang-select {
+  background: var(--golden-text);
+  color: var(--text-headings-color);
 }

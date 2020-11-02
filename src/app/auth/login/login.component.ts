@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.auth.activeUser) {
+    if (this.auth.activeUser != null) {
       this.auth.logout();
     }
   }

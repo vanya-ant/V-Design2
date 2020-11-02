@@ -27,18 +27,13 @@
         <a class="page-link" routerLink="/" (click)="logout()">{{'NAV.LOGOUT' | translate}}</a>
       </div>
     </div>
-    <select class="form-control" #selectedLang (change)="switchLang(selectedLang.value)">
-      <option *ngFor="let language of translate.getLangs()" [value]="language"
-              [selected]="language === translate.currentLang">
-        {{ language }}
-      </option>
-    </select>
+    <label>
+      <select id="lang-select" class="form-control" #selectedLang (change)="switchLang(selectedLang.value)">
+        <option *ngFor="let language of translate.getLangs()" [value]="language"
+                [selected]="language === translate.currentLang">
+          {{ language }}
+        </option>
+      </select>
+    </label>
   </nav>
 </header>
-<!--
-<div class="logged" *ngIf="isLogged">
-  <div class="hello">
-    <p>Hello, {{username}}!</p>
-  </div>
-</div>
--->

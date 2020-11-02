@@ -3,9 +3,7 @@ import {IProject} from '../project';
 import {AuthService} from './auth.service';
 import {AngularFirestore, CollectionReference} from '@angular/fire/firestore';
 import {AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask} from '@angular/fire/storage';
-import * as uuid from 'uuid';
 import firebase from 'firebase';
-import {templateJitUrl} from "@angular/compiler";
 
 @Injectable({
   providedIn: 'root'
@@ -48,13 +46,9 @@ export class ProjectService {
     await this.db.collection('projects').doc(project.id).update({rating: project.rating});
   }
 
-  async uploadFile(file: File) {
+  uploadFile(file: File) {
      const storageRef = firebase.storage().ref();
      const uploadTask = storageRef.child('images/' + file.name).put(file);
-     uploadTask.snapshot.ref.getDownloadURL().then((url) => {
-      console.log('File available at', url);
-      this.downloadUrl = url;
-      console.log(this.downloadUrl);
-    });
+     uploadTask.snapshot.ref.getDownloadURL().then(url => this.downloadUrl = url);
   }
 }

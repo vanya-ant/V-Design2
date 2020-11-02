@@ -44,15 +44,12 @@ export class AuthService {
 
   async login(email: string, password: string) {
     try {
-      await this.afAuth.signInWithEmailAndPassword(email, password).then( user => {
-        if (this.user.email === this.adminEmail) {
-          this.isAdmin = true;
-        }
-      });
+      await this.afAuth.signInWithEmailAndPassword(email, password)
+        .then(result => this.isAdmin = result.user.email === this.adminEmail);
       await this.router.navigate(['projects-portfolio']);
       this.toastr.success('Successfully logged in!');
     } catch (error) {
-      this.toastr.error('Error');
+      this.toastr.error(error.message);
     }
   }
 
@@ -70,7 +67,7 @@ export class AuthService {
   async logout() {
     try {
       await this.afAuth.signOut();
-      localStorage.removeItem('user');
+      localStorage.clear();
       this.isAdmin = false;
       await this.router.navigate(['/']);
       this.toastr.success('Successfully logged out!');
