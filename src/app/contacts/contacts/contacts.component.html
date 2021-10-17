@@ -1,7 +1,7 @@
 <div class="contacts">
   <div class="contacts-map">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2932.117619005128!2d23.303671915645115!3d42.70123022147975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40aa8545b204d169%3A0xe50a79dae6aa0d4a!2z0YPQuy4g4oCe0J7QstGH0LUg0L_QvtC70LXigJwgOTgsIDEzMDMg0KbQtdC90YLRitGALCDQodC-0YTQuNGP!5e0!3m2!1sbg!2sbg!4v1603794799868!5m2!1sbg!2sbg" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-  </div>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2932.117619005154!2d23.303671915861496!3d42.701230221479186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40aa8545b204d169%3A0xe50a79dae6aa0d4a!2sul.%20%22Ovcho%20pole%22%2098%2C%201303%20Sofia%20Center%2C%20Sofia%2C%20Bulgaria!5e0!3m2!1sen!2sus!4v1634412650671!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+</div>
   <div class="contact-info">
     <div class="contact-details">
       <ul class="icons">
@@ -13,16 +13,16 @@
       </ul>
     </div>
     <div class="contact-form">
-      <form #contactForm="ngForm">
-        <input #firstNameInput="ngModel" ngModel name="firstName" type="text" placeholder="{{'CONTACTS.FORM-FIRST-NAME' | translate}}" required minlength="2"/>
-        <p class="error-message" *ngIf="firstNameInput.invalid && firstNameInput.touched">Please enter valid first name!</p>
-        <input #lastNameInput="ngModel" ngModel name="lastName" type="text" placeholder="{{'CONTACTS.FORM-LAST-NAME' | translate}}" required minlength="2"/>
-        <p class="error-message" *ngIf="lastNameInput.invalid && lastNameInput.touched">Please enter valid last name!</p>
-        <input #emailInput="ngModel" ngModel name="email" type="email" placeholder="Email" pattern="^([a-zA-Z0-9._-]{4,}@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]{2,})$" required/>
-        <p class="error-message" *ngIf="emailInput.invalid && emailInput.touched">Please enter valid email!</p>
-        <input #subjectInput="ngModel" ngModel name="subject" type="text" placeholder="{{'CONTACTS.FORM-SUBJECT' | translate}}" minlength="2"/>
-        <textarea #messageInput="ngModel" ngModel name="message" placeholder="{{'CONTACTS.FORM-MESSAGE' | translate}}"  minlength="10" required></textarea>
-        <p class="error-message" *ngIf="messageInput.invalid && messageInput.touched">Please enter valid message!</p>
+      <form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+        <input class="isSubmitted" id="firstName" formControlName="firstName" type="text" placeholder="{{'CONTACTS.FORM-FIRST-NAME' | translate}}" required minlength="2"/>
+        <p class="error-message" *ngIf="form.get('firstName').invalid && form.get('firstName').touched">Please enter valid first name!</p>
+        <input id="lastName" formControlName="lastName" type="text" placeholder="{{'CONTACTS.FORM-LAST-NAME' | translate}}" required minlength="2"/>
+        <p class="error-message" *ngIf="form.get('lastName').invalid && form.get('lastName').touched">Please enter valid last name!</p>
+        <input id="email" formControlName="email" type="email" placeholder="Email" pattern="^([a-zA-Z0-9._-]{4,}@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]{2,})$" required/>
+        <p class="error-message" *ngIf="form.get('email').invalid && form.get('email').touched">Please enter valid email!</p>
+        <input id="subject" formControlName="subject" type="text" placeholder="{{'CONTACTS.FORM-SUBJECT' | translate}}"/>
+        <textarea id="message" formControlName="message" placeholder="{{'CONTACTS.FORM-MESSAGE' | translate}}"  minlength="10" required></textarea>
+        <p class="error-message" *ngIf="form.get('message').invalid && form.get('message').touched">Message must be at least 10 symbols!</p>
         <button class="button">
           {{'CONTACTS.BUTTON' | translate}}
           <div class="button__horizontal"></div>

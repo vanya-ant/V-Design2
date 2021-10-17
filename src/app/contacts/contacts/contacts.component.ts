@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ContactService} from '../../shared/services/contact.service';
 
 @Component({
   selector: 'app-contacts',
@@ -7,10 +8,22 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./contacts.component.scss']
 })
 export class ContactsComponent implements OnInit {
+  form: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
-
-  ngOnInit(): void {
+  constructor(private fb: FormBuilder, private contactService: ContactService) {
+    this.form = this.fb.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', Validators.required],
+      subject: [''],
+      message: ['', Validators.required],
+    });
   }
 
+  ngOnInit() {}
+
+  onSubmit(form) {
+    this.contactService.PostMessage(form.value);
+    this.form.reset();
+  }
 }
