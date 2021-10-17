@@ -49,6 +49,10 @@
   object-fit: cover;
   background-color: white;
   align-self: center;
+
+  @include bp (phone){
+    height: auto;
+  }
 }
 
 .about-wrapper blockquote {

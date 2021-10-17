@@ -163,7 +163,14 @@ footer a {
   padding-top: 0.5em;
 }
 
-#lang-select {
+select {
+  appearance: none;
   background: var(--golden-text);
   color: var(--text-headings-color);
+  border-radius: 0.2em;
+  border: none;
+}
+
+select option {
+  border-radius: 0.2em;
 }
