@@ -3,10 +3,6 @@
 *{
   font-family:'Lato',sans-serif;
 
-  @include bp(phone) {
-    font-size: var(--font-size-phone);
-  }
-
   @include bp(mobile) {
     font-size: var(--font-size-tablet);
   }
@@ -17,6 +13,10 @@
 
   @include bp(desktop) {
     font-size: var(--font-size-desktop);
+  }
+
+  @include bp(phone) {
+    font-size: var(--font-size-phone);
   }
 
   @include bp(large) {

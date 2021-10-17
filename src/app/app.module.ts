@@ -21,8 +21,6 @@ import { AuthModule } from './auth/auth.module';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-import * as admin from 'firebase-admin';
-
 @NgModule({
   declarations: [
     AppComponent,
