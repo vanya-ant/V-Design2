@@ -4,7 +4,7 @@ import { AuthService } from '../../shared/services/auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { passwordMatch } from '../../shared/validators';
-import firebase from 'firebase';
+import firebase from 'firebase/compat/app';
 
 @Component({
   selector: 'app-register',

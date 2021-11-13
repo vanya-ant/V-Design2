@@ -16,7 +16,7 @@ export class ProjectCreateComponent implements OnInit {
 
   form: FormGroup;
   urlRegex = '(https?://)?([a-z0-9/.-?-A-Z/&]+)';
-  file: File;
+  files: File [] = [];
   project: IProject;
 
   constructor( private fb: FormBuilder,
@@ -30,7 +30,7 @@ export class ProjectCreateComponent implements OnInit {
       description: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(1000)]],
       year: ['', [Validators.required]],
       rating: [0],
-      file: ['']
+      file: [[]]
     });
   }
 
@@ -38,24 +38,25 @@ export class ProjectCreateComponent implements OnInit {
   }
 
   async createProject() {
-    this.projectService.uploadFile(this.file);
-
+    const array =  await this.projectService.uploadFiles(this.files);
     this.project = {
-      id: uuid.v4(),
-      title: this.form.value.title,
-      year: this.form.value.year,
-      description: this.form.value.description,
-      rating: 0,
-      imageUrl: this.projectService.downloadUrl,
+          id: uuid.v4(),
+          title: this.form.value.title,
+          year: this.form.value.year,
+          description: this.form.value.description,
+          rating: 0,
+          imageUrl:  array,
     };
 
-    const createdProject = await this.projectService.create(this.project);
+    await this.projectService.create(this.project);
 
     await this.router.navigate(['projects-portfolio']);
     this.toastr.success('Successfully created project');
   }
 
-  onFileSelected(event) {
-   this.file = event.target.files[0];
+  onFileChange(event: any) {
+      for (let i = 0; i < event.target.files.length; i++) {
+        this.files.push(event.target.files[i]);
+      }
   }
 }

@@ -2,7 +2,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../shared/services/auth.service';
 import { TranslateService } from '@ngx-translate/core';
-import { User } from 'firebase';
+import firebase from 'firebase/compat/app';
+import User = firebase.User;
 
 @Component({
   selector: 'app-navigation',

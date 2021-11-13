@@ -18,9 +18,9 @@
         <input type="number" min="2000" max="2099" step="1" value="2020" id="create-year" formControlName="year"/>
       </div>
             <div class="form-field">
-              <input formControlName="file" type="file" class="ng-file-upload" (change)="onFileSelected($event)" placeholder="Upload image" accept="image/*"/>
+              <input formControlName="file" type="file" multiple class="ng-file-upload" (change)="onFileChange($event)" placeholder="Upload images" accept="image/*"/>
             </div>
-      <button class="button">
+            <button class="button">
         Create
         <div class="button__horizontal"></div>
         <div class="button__vertical"></div>

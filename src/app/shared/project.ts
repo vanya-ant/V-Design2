@@ -3,6 +3,6 @@ export class IProject {
   title: string;
   description: string;
   year: string;
-  imageUrl: string;
+  imageUrl: string [] = [];
   rating: number;
 }

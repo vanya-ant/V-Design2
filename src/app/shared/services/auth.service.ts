@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { AngularFireAuth } from '@angular/fire/auth';
-import firebase, { User } from 'firebase';
+import { } from '@angular/fire/auth';
 import { HttpClient } from '@angular/common/http';
-import {AngularFirestore, CollectionReference} from '@angular/fire/firestore';
+import {CollectionReference} from '@angular/fire/firestore';
 import {environment} from '../../../environments/environment';
+import {AngularFireAuth} from '@angular/fire/compat/auth';
+import {AngularFirestore} from '@angular/fire/compat/firestore';
+import firebase from 'firebase/compat/app';
+import User = firebase.User;
 
 const baseUrl = 'https://v-design-5.firebaseio.com';
 
@@ -20,7 +23,7 @@ export class AuthService {
   userStatus: string;
   private adminEmail = 'vanyad@gmail.com';
 
-  usersCollection: CollectionReference;
+  usersCollection;
 
   constructor(private afAuth: AngularFireAuth,
               public  router: Router,
