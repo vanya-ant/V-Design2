@@ -5,7 +5,19 @@
       <p>{{ project.year }}</p>
       <p>{{ project.description }}</p>
     </div>
-    <img src="{{ project.imageUrl }}" class="gallery-img" />
+    <div *ngIf="project.imageUrl.length > 1">
+      <div *ngFor="let img of project.imageUrl; index as i">
+        <div class="numbertext"> {{ (i + 1) }}/ {{ project.imageUrl.length }}</div>
+        <div id="slider">
+          <ul>
+            <img src="{{ img }}" class="gallery-img">
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="project.imageUrl.length == 1">
+      <img src="{{ project.imageUrl }}" class="gallery-img" />
+    </div>
     <div *ngIf="isLogged()">
       <div class="project-rating">
         <p>Rate project</p>

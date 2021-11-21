@@ -11,6 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class ProjectListComponent implements OnInit {
   projects: any;
   title: string;
+  isSingle: boolean;
 
   constructor(private projectService: ProjectService, private translateService: TranslateService) {
     this.projectService.getCollection()

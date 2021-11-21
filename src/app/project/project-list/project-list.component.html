@@ -7,7 +7,23 @@
           <p>{{ project.data().year }}</p>
           <p>{{ project.data().description}}</p>
         </a>
-        <img src="{{ project.data().imageUrl }}" class="gallery-img"/>
+        <div *ngIf="project.data().imageUrl.length > 1">
+          <div *ngFor="let img of project.data().imageUrl; index as i">
+            <div class="numbertext"> {{ (i + 1) }}/ {{ project.data().imageUrl.length }}</div>
+            <div id="slider">
+              <ul>
+                <img src="{{ img }}" class="gallery-img">
+              </ul>
+            </div>
+          </div>
+        </div>
+       <div *ngIf="project.data().imageUrl.length == 1" class="row">
+         <div class="column">
+           <div *ngFor="let img of project.data().imageUrl">
+             <img src="{{ img }}" class="gallery-img"/>
+           </div>
+         </div>
+       </div>
         <div *ngIf="project.data().rating != 0">
           <div class="rating-list" *ngFor="let i of [].constructor(project.data().rating)">
             <i class="fa fa-star"  style="color: var(--golden-text);"></i>

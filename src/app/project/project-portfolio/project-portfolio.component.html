@@ -1,7 +1,14 @@
 <div class="gallery">
   <div *ngFor="let project of projects">
     <figure class="gallery-item-{{project.data().title}}">
-      <img src="{{project.data().imageUrl}}" class="gallery-img" (click)="openImg(project.data().imageUrl)"/>
+      <div *ngIf="project.data().imageUrl.length > 1">
+        <div *ngFor="let img of project.data().imageUrl">
+          <img src="{{ img }}" class="gallery-img" (click)="openImg(img)"/>
+        </div>
+      </div>
+      <div *ngIf="project.data().imageUrl.length == 1">
+        <img src="{{project.data().imageUrl}}" class="gallery-img" (click)="openImg(project.data().imageUrl)"/>
+      </div>
     </figure>
   </div>
 </div>
