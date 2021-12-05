@@ -17,55 +17,55 @@ export class ProjectCalculatorService {
     switch (formData.property) {
       case 'Apartment': this.result = this.calculatePropertyArea(formData) *
         (formData.bathrooms + formData.bedrooms);
-        break;
+                        break;
       case 'Апартамент': this.result = this.calculatePropertyArea(formData) *
         (formData.bathrooms + formData.bedrooms);
-        break;
+                         break;
       case 'Studio': this.result = this.calculatePropertyArea(formData);
-        break;
+                     break;
       case 'Студио': this.result = this.calculatePropertyArea(formData);
-        break;
+                     break;
       case 'Office': this.result = this.calculatePropertyArea(formData) *
         (formData.bathrooms + formData.bedrooms) * Office;
-        break;
+                     break;
       case 'Офис': this.result = this.calculatePropertyArea(formData) *
         (formData.bathrooms + formData.bedrooms) * Office;
-        break;
+                   break;
       case 'House': this.result = this.calculatePropertyArea(formData) *
         (formData.bathrooms + formData.bedrooms) * House;
-        break;
+                    break;
       case 'Къща': this.result = this.calculatePropertyArea(formData) *
         (formData.bathrooms + formData.bedrooms) * House;
-        break;
+                   break;
       case 'Commercial property': this.result = this.calculatePropertyArea(formData) *
         (formData.bathrooms + formData.bedrooms) * RetailProperty;
-        break;
+                                  break;
       case 'Търговски обект': this.result = this.calculatePropertyArea(formData) *
         (formData.bathrooms + formData.bedrooms) * RetailProperty;
-        break;
+                              break;
     }
 
     return this.result;
   }
 
   calculatePropertyArea(formData) {
-    const  BaseProjectRate = 4.88;
-    const  FullProjectRate = 8.34;
-    const  ConsultationRate = 3.15;
+    const  BaseProjectRate = 5.88;
+    const  FullProjectRate = 10.08;
+    const  ConsultationRate = 4.15;
 
     switch (formData.project) {
       case 'Basic': this.calculatedArea = BaseProjectRate * formData.area;
-        break;
+                    break;
       case 'Базов': this.calculatedArea = BaseProjectRate * formData.area;
-        break;
+                    break;
       case 'Full': this.calculatedArea = FullProjectRate * formData.area;
-        break;
+                   break;
       case 'Пълен': this.calculatedArea = FullProjectRate * formData.area;
-        break;
+                    break;
       case 'Consultation': this.calculatedArea = ConsultationRate * formData.area;
-        break;
+                           break;
       case 'Консултация': this.calculatedArea = ConsultationRate * formData.area;
-        break;
+                          break;
     }
 
     return this.calculatedArea;
