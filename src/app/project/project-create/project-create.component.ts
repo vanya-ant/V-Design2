@@ -38,7 +38,7 @@ export class ProjectCreateComponent implements OnInit {
   }
 
   async createProject() {
-    const array =  await this.projectService.uploadFiles(this.files);
+    const array =  await this.projectService.uploadFiles(this.files, this.project.id);
     this.project = {
           id: uuid.v4(),
           title: this.form.value.title,

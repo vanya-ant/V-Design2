@@ -46,7 +46,7 @@ export class ProjectService {
     await this.db.collection('projects').doc(project.id).update({rating: project.rating});
   }
 
-  async uploadFiles(files: File []) {
+  async uploadFiles(files: File[], id: string) {
      const storageRef = firebase.storage().ref();
      for (let i = 0; i < files.length; i++) {
        const task = storageRef.child('images/' + files[i].name).put(files[i])

@@ -48,9 +48,15 @@ export class AuthService {
   async login(email: string, password: string) {
     try {
       await this.afAuth.signInWithEmailAndPassword(email, password)
-        .then(result => this.isAdmin = result.user.email === this.adminEmail);
-      await this.router.navigate(['projects-portfolio']);
-      this.toastr.success('Successfully logged in!');
+        .then(data => { if (!data.user.emailVerified) {
+          this.toastr.error('Please, verify your email!');
+          this.afAuth.signOut();
+          } else {
+          this.isAdmin = email === this.adminEmail;
+          this.router.navigate(['projects-portfolio']);
+          this.toastr.success('Successfully logged in!');
+        }
+      });
     } catch (error) {
       this.toastr.error(error.message);
     }
@@ -58,9 +64,11 @@ export class AuthService {
 
   async register(email: string, password: string) {
     try {
-      await this.afAuth.createUserWithEmailAndPassword(email, password);
+      await this.afAuth.createUserWithEmailAndPassword(email, password)
+        .then(data => data.user.sendEmailVerification());
+      this.toastr.info('Email verification link was sent to your email address');
+      await this.afAuth.signOut();
       await this.router.navigate(['projects-portfolio']);
-      this.toastr.success('Successfully registered!');
     } catch (error) {
       console.log(error.message);
       this.toastr.error('Error');

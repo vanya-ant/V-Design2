@@ -35,7 +35,6 @@ export class RegisterComponent implements OnInit {
   }
 
   async register() {
-    const database = firebase.database();
     const registerObj = this.registerForm.value;
     const currentPass = this.registerForm.value.passwords.password;
     delete this.registerForm.value.passwords;
