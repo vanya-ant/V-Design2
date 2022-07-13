@@ -1,3 +1,0 @@
-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
-
-git push https://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@github.com/vanya-ant/V-Design2.git

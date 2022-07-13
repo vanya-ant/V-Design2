@@ -58,6 +58,14 @@
     & .site-nav-login-register a:last-child {
       padding-left: 0;
     }
+
+    & .page-link {
+      margin-top: 0.5em;
+    }
+
+    #lang-select {
+      margin-top: 0.5em;
+    }
   }
 
   @include bp (phone)  {
@@ -68,6 +76,14 @@
 
     & .page-link {
       border-bottom: 0.05em solid var(--golden-text);
+    }
+
+    & .page-link {
+      margin-top: 0.5em;
+    }
+
+    #lang-select {
+      margin-top: 0.5em;
     }
   }
 }

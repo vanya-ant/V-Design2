@@ -16,6 +16,15 @@
   align-items: center;
   padding: 0.5em;
   margin: 1.4em 0.5em;
+
+  @include bp (phone) {
+    .login-form {
+      padding: 0.5em;
+    }
+    .form-field {
+      padding: 1.5em;
+    }
+  }
 }
 
 .login-form button {
@@ -71,7 +80,7 @@ input.login-form.touched {
   width: calc(100% - 1em);
   height: 10em;
   object-fit: cover;
-  object-position: 100% 25%;
+  object-position: 110% 25%;
   background-color: black;
   opacity: 0.7;
 }
@@ -85,4 +94,6 @@ input.login-form.touched {
   margin: auto 10em;
   font-size: 0.8em;
   color: var(--golden-text);
+  display: block;
 }
+
