@@ -2,4 +2,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/vdesignb/public_html/
-    - /bin/cp -r src/ $DEPLOYPATH
+    - /bin/cp -R src/ $DEPLOYPATH
