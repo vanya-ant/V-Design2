@@ -15,7 +15,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@@angular-devkit/build-angular:browser-esbuild",
+          "builder": "@angular-devkit/build-angular:browser-esbuild",
           "options": {
             "outputPath": {
               "base": "dist/V-Design2"
@@ -69,18 +69,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "buildTarget": "V-Design2:build"
+            "browserTarget": "V-Design2:build"
           },
           "configurations": {
             "production": {
-              "buildTarget": "V-Design2:build:production"
+              "browserTarget": "V-Design2:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "V-Design2:build"
+            "browserTarget": "V-Design2:build"
           }
         },
         "test": {
