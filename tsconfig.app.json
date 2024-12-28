@@ -12,5 +12,4 @@
   "include": [
     "src/**/*.d.ts"
   ],
-  "enableIvy": false
 }
