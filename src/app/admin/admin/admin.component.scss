@@ -1,4 +1,4 @@
-@import '../../../assets/scss/responsive';
+@use '../../../assets/scss/responsive' as *;
 
 .create-project-container {
   background-color: var(--text-headings-color);

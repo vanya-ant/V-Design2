@@ -1,4 +1,4 @@
-@import '../../../assets/scss/responsive';
+@use '../../../assets/scss/responsive' as *;
 
 .projects-portfolio {
   width: calc(100% - 1em);

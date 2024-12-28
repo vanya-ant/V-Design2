@@ -1,12 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
-@import "https://use.fontawesome.com/releases/v5.3.1/css/all.css";
+@import './fontawesome/scss/fontawesome.scss';
 
-@import './assets/scss/variables';
-@import './assets/scss/responsive';
+@use './assets/scss/variables';
+@use './assets/scss/responsive';
 
-@import './assets/scss/reset';
-@import './assets/scss/typography';
-@import './assets/scss/fancy-button';
+@use './assets/scss/reset';
+@use './assets/scss/typography';
+@use './assets/scss/fancy-button';
 
-@import './assets/scss/checkbox';
-@import './assets/scss/error-style';
+@use './assets/scss/checkbox';
+@use './assets/scss/error-style';
