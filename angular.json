@@ -15,12 +15,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser-esbuild",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": {
-              "base": "dist/V-Design2"
-            },
+            "outputPath": "dist/V-Design2",
             "index": "src/index.html",
+            "main": "src/main.ts",
             "polyfills": [
               "src/polyfills.ts"
             ],
@@ -69,18 +68,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "V-Design2:build"
+            "buildTarget": "V-Design2:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "V-Design2:build:production"
+              "buildTarget": "V-Design2:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "V-Design2:build"
+            "buildTarget": "V-Design2:build"
           }
         },
         "test": {

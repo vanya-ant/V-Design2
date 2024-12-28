@@ -1,0 +1,1 @@
+{"ast":null,"code":"export function passwordMatch(c) {\n  return c.value.password === c.value.repeatPassword ? null : {\n    passwordMatch: true\n  };\n}","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}
