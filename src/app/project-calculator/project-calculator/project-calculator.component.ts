@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ProjectCalculatorService } from '../../shared/services/project-calculator.service';
 
 @Component({
@@ -9,11 +9,11 @@ import { ProjectCalculatorService } from '../../shared/services/project-calculat
 })
 export class ProjectCalculatorComponent implements OnInit {
 
-  projectCalculatorForm: FormGroup;
+  projectCalculatorForm: UntypedFormGroup;
   formValue: any;
   submitted = false;
 
-  constructor(private  fb: FormBuilder, private projectCalculatorService: ProjectCalculatorService) {
+  constructor(private  fb: UntypedFormBuilder, private projectCalculatorService: ProjectCalculatorService) {
     this.projectCalculatorForm = this.fb.group({
       property: ['Studio', [Validators.required]],
       project:  ['Basic', [Validators.required]],

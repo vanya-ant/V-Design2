@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {IProject} from '../../shared/project';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ProjectService} from '../../shared/services/project.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import {Router} from '@angular/router';
@@ -14,12 +14,12 @@ import * as uuid from 'uuid';
 })
 export class ProjectCreateComponent implements OnInit {
 
-  form: FormGroup;
+  form: UntypedFormGroup;
   urlRegex = '(https?://)?([a-z0-9/.-?-A-Z/&]+)';
   files: File [] = [];
   project: IProject;
 
-  constructor( private fb: FormBuilder,
+  constructor( private fb: UntypedFormBuilder,
                private projectService: ProjectService,
                private auth: AuthService,
                private router: Router,

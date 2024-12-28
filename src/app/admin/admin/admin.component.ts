@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {IProject} from '../../shared/project';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ProjectService} from '../../shared/services/project.service';
 import {AuthService} from '../../shared/services/auth.service';
 import {Router} from '@angular/router';
@@ -13,11 +13,11 @@ import * as uuid from 'uuid';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
-  form: FormGroup;
+  form: UntypedFormGroup;
   urlRegex = '(https?://)?([a-z0-9/.-?-A-Z/&]+)';
   public pictures = [];
 
-  constructor( private fb: FormBuilder,
+  constructor( private fb: UntypedFormBuilder,
                private projectService: ProjectService,
                private auth: AuthService,
                private router: Router,
