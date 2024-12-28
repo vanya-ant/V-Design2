@@ -1,11 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import {
-  CanActivate,
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot,
-  Router, UrlTree
-} from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot, Router, UrlTree } from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFireDatabase} from '@angular/fire/database';
@@ -18,7 +13,7 @@ import {ignoreDiagnostics} from '@angular/compiler-cli/src/ngtsc/typecheck/src/d
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AuthGuard  {
   constructor(
     public auth: AuthService,
     public db: AngularFireDatabase,
