@@ -3,9 +3,10 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 import { ProjectCalculatorService } from '../../shared/services/project-calculator.service';
 
 @Component({
-  selector: 'app-project-calculator',
-  templateUrl: './project-calculator.component.html',
-  styleUrls: ['./project-calculator.component.scss']
+    selector: 'app-project-calculator',
+    templateUrl: './project-calculator.component.html',
+    styleUrls: ['./project-calculator.component.scss'],
+    standalone: false
 })
 export class ProjectCalculatorComponent implements OnInit {
 

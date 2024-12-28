@@ -4,9 +4,10 @@ import {ProjectService} from '../../shared/services/project.service';
 import {Observable} from 'rxjs';
 
 @Component({
-  selector: 'app-project-portfolio',
-  templateUrl: './project-portfolio.component.html',
-  styleUrls: ['./project-portfolio.component.scss']
+    selector: 'app-project-portfolio',
+    templateUrl: './project-portfolio.component.html',
+    styleUrls: ['./project-portfolio.component.scss'],
+    standalone: false
 })
 export class ProjectPortfolioComponent implements OnInit {
 

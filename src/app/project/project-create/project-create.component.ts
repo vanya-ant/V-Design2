@@ -8,9 +8,10 @@ import {ToastrService} from 'ngx-toastr';
 import * as uuid from 'uuid';
 
 @Component({
-  selector: 'app-project-create',
-  templateUrl: './project-create.component.html',
-  styleUrls: ['./project-create.component.scss']
+    selector: 'app-project-create',
+    templateUrl: './project-create.component.html',
+    styleUrls: ['./project-create.component.scss'],
+    standalone: false
 })
 export class ProjectCreateComponent implements OnInit {
 

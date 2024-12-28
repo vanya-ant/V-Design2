@@ -5,9 +5,10 @@ import {AuthService} from '../../shared/services/auth.service';
 import {ToastrService} from 'ngx-toastr';
 
 @Component({
-  selector: 'app-project-details',
-  templateUrl: './project-details.component.html',
-  styleUrls: ['./project-details.component.scss']
+    selector: 'app-project-details',
+    templateUrl: './project-details.component.html',
+    styleUrls: ['./project-details.component.scss'],
+    standalone: false
 })
 export class ProjectDetailsComponent implements OnInit {
 

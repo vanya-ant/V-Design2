@@ -8,9 +8,10 @@ import {ToastrService} from 'ngx-toastr';
 import * as uuid from 'uuid';
 
 @Component({
-  selector: 'app-admin',
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss']
+    selector: 'app-admin',
+    templateUrl: './admin.component.html',
+    styleUrls: ['./admin.component.scss'],
+    standalone: false
 })
 export class AdminComponent implements OnInit {
   form: UntypedFormGroup;

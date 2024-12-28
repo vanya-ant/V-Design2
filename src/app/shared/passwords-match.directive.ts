@@ -3,14 +3,15 @@ import {AbstractControl, NG_VALIDATORS, ValidationErrors, Validator} from '@angu
 import {passwordMatch} from './validators';
 
 @Directive({
-  selector: '[appPasswordsMatch][ngModelGroup]',
-  providers: [
-    {
-      provide: NG_VALIDATORS,
-      useExisting: PasswordsMatchDirective,
-      multi: true
-    }
-  ]
+    selector: '[appPasswordsMatch][ngModelGroup]',
+    providers: [
+        {
+            provide: NG_VALIDATORS,
+            useExisting: PasswordsMatchDirective,
+            multi: true
+        }
+    ],
+    standalone: false
 })
 export class PasswordsMatchDirective implements  Validator {
 
