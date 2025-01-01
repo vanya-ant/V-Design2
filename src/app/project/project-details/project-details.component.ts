@@ -23,7 +23,7 @@ export class ProjectDetailsComponent implements OnInit {
               private toastr: ToastrService) {
     this.activatedRoute.params.forEach((params: Params) => {
       this.projectService.getProject(this.activatedRoute.snapshot.params.id)
-        .then((data) => this.project = data.data());
+        .forEach( p => p.data());
     });
   }
 

@@ -7,7 +7,7 @@
         <label class="title" for="create-title"><span class="hidden">Project title</span></label>
         <input id="create-title" formControlName="title" value="Project title" placeholder="Project title">
       </div>
-      <p class="error-message" *ngIf="form.get('title').invalid && form.get('title').touched">Please enter valid title!</p>
+      <p class="error-message" *ngIf="form.get('title').invalid && form.get('title').touched">Please enter title longer than 3 symbols!</p>
       <div class="form-field">
         <label class="description" for="create-description"><span class="hidden">Project description</span></label>
         <textarea rows="4" cols="18" id="create-description" formControlName="description" placeholder="Description"></textarea>
@@ -21,7 +21,7 @@
               <input formControlName="file" type="file" multiple class="ng-file-upload" (change)="onFileChange($event)" placeholder="Upload images" accept="image/*"/>
             </div>
             <button class="button">
-        Create
+              Create
         <div class="button__horizontal"></div>
         <div class="button__vertical"></div>
       </button>

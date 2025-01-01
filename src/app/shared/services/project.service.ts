@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {IProject} from '../project';
-import {AuthService} from './auth.service';
-import {AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask} from '@angular/fire/compat/storage';
-import {AngularFirestore} from '@angular/fire/compat/firestore';
+import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from '@angular/fire/compat/firestore';
 import firebase from 'firebase/compat/app';
+import {Projects} from '@angular/cli/lib/config/workspace-schema';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +11,13 @@ import firebase from 'firebase/compat/app';
 
 export class ProjectService {
   projectsCollection;
-  ref: AngularFireStorageReference;
-  task: AngularFireUploadTask;
+  projects: Observable<Projects[]>;
+  projectDocs: AngularFirestoreDocument<Projects>;
+  // ref: AngularFireStorageReference;
   array: string [] = [];
 
-  constructor(private auth: AuthService, private db: AngularFirestore, private afStorage: AngularFireStorage) {
-    this.projectsCollection = db.collection<IProject>('projects').ref;
+  constructor(private db: AngularFirestore) {
+    this.projectsCollection = this.db.collection<IProject> ('projects').ref;
   }
 
   getCollection() {
@@ -47,12 +48,12 @@ export class ProjectService {
   }
 
   async uploadFiles(files: File[], id: string) {
-     const storageRef = firebase.storage().ref();
-     for (let i = 0; i < files.length; i++) {
-       const task = storageRef.child('images/' + files[i].name).put(files[i])
-         .then(snapshot => snapshot.ref.getDownloadURL());
-       this.array.push(await task);
-     }
-     return this.array;
-   }
+    const storageRef = firebase.storage().ref();
+    for (const file of files) {
+      const task = storageRef.child('images/' + file.name).put(file)
+        .then(snapshot => snapshot.ref.getDownloadURL());
+      this.array.push(await task);
+    }
+    return this.array;
+  }
 }

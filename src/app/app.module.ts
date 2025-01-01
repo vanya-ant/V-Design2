@@ -34,7 +34,7 @@ import {AngularFireStorageModule} from '@angular/fire/compat/storage';
         AngularFireAuthModule, // auth
         AngularFireStorageModule, // storage
         FormsModule,
-        ReactiveFormsModule,
+      ReactiveFormsModule,
         ToastrModule.forRoot({
             timeOut: 10000,
             positionClass: 'toast-bottom-right',

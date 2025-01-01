@@ -1,6 +1,9 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ProjectService} from '../../shared/services/project.service';
 import { TranslateService } from '@ngx-translate/core';
+import {Projects} from '@angular/cli/lib/config/workspace-schema';
+import {IProject} from '../../shared/project';
+import {Observable} from 'rxjs';
 
 @Component({
     selector: 'app-project-list',
@@ -10,9 +13,8 @@ import { TranslateService } from '@ngx-translate/core';
 })
 
 export class ProjectListComponent implements OnInit {
-  projects: any;
+  projects: IProject[];
   title: string;
-  isSingle: boolean;
 
   constructor(private projectService: ProjectService, private translateService: TranslateService) {
     this.projectService.getCollection()

@@ -1,5 +1,5 @@
 export class IProject {
-  id?: string;
+  id: string;
   title: string;
   description: string;
   year: string;
