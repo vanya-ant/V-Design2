@@ -54,11 +54,10 @@ export class ProjectCreateComponent implements OnInit {
         console.error('Project creation failed:', err);
         this.toastr.error('Failed to create project ' + this.project.imageUrl);
         return null;
+      }).finally(async () => {
+        await this.router.navigate(['projects-portfolio']);
       });
-    if (creationResult) {
-      await this.router.navigate(['projects-portfolio']);
-      this.toastr.success('Successfully created project');
-    }
+    this.toastr.success('Successfully created project');
   }
 
   onFileChange(event: any) {
