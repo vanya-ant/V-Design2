@@ -12,7 +12,7 @@ export class User implements firebase.User {
   email: string;
   role: string;
 
-  constructor(uid: string, email: string, username: string, imageUrl: string){
+  constructor(uid: string, email: string){
     this.uid = uid;
     this.email = email;
     this.role = 'user';

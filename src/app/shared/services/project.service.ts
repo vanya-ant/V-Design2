@@ -1,9 +1,7 @@
 import {Injectable} from '@angular/core';
 import {IProject} from '../project';
-import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from '@angular/fire/compat/firestore';
-import firebase from 'firebase/compat/app';
-import {Projects} from '@angular/cli/lib/config/workspace-schema';
-import {Observable} from 'rxjs';
+import {AngularFirestore} from '@angular/fire/compat/firestore';
+import {AngularFireStorage} from '@angular/fire/compat/storage';
 
 @Injectable({
   providedIn: 'root'
@@ -11,13 +9,12 @@ import {Observable} from 'rxjs';
 
 export class ProjectService {
   projectsCollection;
-  projects: Observable<Projects[]>;
-  projectDocs: AngularFirestoreDocument<Projects>;
-  // ref: AngularFireStorageReference;
   array: string [] = [];
+  downloadURL: string;
+  path: string;
 
-  constructor(private db: AngularFirestore) {
-    this.projectsCollection = this.db.collection<IProject> ('projects').ref;
+  constructor(private db: AngularFirestore, private st: AngularFireStorage) {
+    this.projectsCollection = this.db.collection('projects').ref;
   }
 
   getCollection() {
@@ -47,13 +44,35 @@ export class ProjectService {
     await this.db.collection('projects').doc(project.id).update({rating: project.rating});
   }
 
-  async uploadFiles(files: File[], id: string) {
-    const storageRef = firebase.storage().ref();
-    for (const file of files) {
-      const task = storageRef.child('images/' + file.name).put(file)
-        .then(snapshot => snapshot.ref.getDownloadURL());
-      this.array.push(await task);
+  // async uploadFiles(files: File[], id) {
+  //   const storageRef = this.st.ref('projects').child('images/');
+  //   for (const file of files) {
+  //     this.path = `images/${file.name}`;
+  //     const task = this.st.upload(this.path, file)
+  //       .snapshotChanges()
+  //       .pipe()
+  //       .subscribe( async async => {
+  //         this.downloadURL = await storageRef.getDownloadURL().toPromise();
+  //         this.array.push(this.downloadURL);
+  //       });
+  //   }
+  //   return this.array;
+  // }
+
+  async uploadFiles(files: File[]): Promise<any> {
+    const storageRef = this.st.ref('projects');
+    if (files && files.length) {
+      try {
+        for (const file of files){
+          const task = storageRef.child('images/' + file.name).put(file)
+            .then(snapshot => snapshot.ref.getDownloadURL());
+          this.array.push(await task);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+
+      return this.array;
     }
-    return this.array;
   }
 }

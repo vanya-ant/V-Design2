@@ -4,6 +4,7 @@ import { SharedModule } from '../shared/shared.module';
 import { ContactsComponent } from './contacts/contacts.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   declarations: [ContactsComponent],
@@ -13,6 +14,7 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
+    TranslateModule
   ]
 })
 export class ContactsModule { }

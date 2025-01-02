@@ -15,21 +15,21 @@ import { environment } from '../environments/environment';
 import { AuthModule } from './auth/auth.module';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import {AngularFireModule} from '@angular/fire/compat';
 import {AngularFirestoreModule} from '@angular/fire/compat/firestore';
 import {AngularFireAuthModule} from '@angular/fire/compat/auth';
 import {AngularFireStorageModule} from '@angular/fire/compat/storage';
+import {AngularFireModule} from '@angular/fire/compat';
 
 @NgModule({ declarations: [
         AppComponent,
     ],
     bootstrap: [AppComponent],
     imports: [BrowserModule,
+        AngularFireModule.initializeApp(environment.firebase),
         BrowserAnimationsModule,
         CoreModule,
         AppRoutingModule,
         RouterModule,
-        AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule, // firestore
         AngularFireAuthModule, // auth
         AngularFireStorageModule, // storage

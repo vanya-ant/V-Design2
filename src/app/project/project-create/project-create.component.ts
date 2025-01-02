@@ -39,23 +39,26 @@ export class ProjectCreateComponent implements OnInit {
   }
 
   async createProject() {
-    const id = uuid();
-    const array =  await this.projectService.uploadFiles(this.files, id);
-    if (!Array.isArray(array)) {
-      console.error('Uploaded files did not return an array');
-      return;  // Exit early
-    }
+    const id: string = uuid();
+    const uploadedFiles = await this.projectService.uploadFiles(this.files);
     this.project = {
-          id,
-          title: this.form.value.title,
-          year: this.form.value.year,
-          description: this.form.value.description,
-          rating: 0,
-          imageUrl:  array,
+      id,
+      title: this.form.value.title,
+      year: this.form.value.year,
+      description: this.form.value.description,
+      rating: 0,
+      imageUrl: uploadedFiles,
     };
-    await this.projectService.create(this.project).catch(err => console.log('Project is NOT created'));
-    await this.router.navigate(['projects-portfolio']);
-    this.toastr.success('Successfully created project');
+    const creationResult = await this.projectService.create(this.project)
+      .catch(err => {
+        console.error('Project creation failed:', err);
+        this.toastr.error('Failed to create project ' + this.project.imageUrl);
+        return null;
+      });
+    if (creationResult) {
+      await this.router.navigate(['projects-portfolio']);
+      this.toastr.success('Successfully created project');
+    }
   }
 
   onFileChange(event: any) {

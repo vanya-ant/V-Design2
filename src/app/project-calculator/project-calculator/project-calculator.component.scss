@@ -10,7 +10,7 @@
   padding-bottom: 1em;
   color: var(--text-headings-color);
 
-  @include bp(tablet) {
+  @media (tablet) {
     display: block;
   }
 
