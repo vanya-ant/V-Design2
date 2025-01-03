@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {IProject} from '../../shared/project';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ProjectService} from '../../shared/services/project.service';
-import { AuthService } from 'src/app/shared/services/auth.service';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import { v4 as uuid } from 'uuid';
@@ -16,13 +15,12 @@ import { v4 as uuid } from 'uuid';
 export class ProjectCreateComponent implements OnInit {
 
   form: UntypedFormGroup;
-  urlRegex = '(https?://)?([a-z0-9/.-?-A-Z/&]+)';
+  // urlRegex = '(https?://)?([a-z0-9/.-?-A-Z/&]+)';
   files: File [] = [];
   project: IProject;
 
   constructor( private fb: UntypedFormBuilder,
                private projectService: ProjectService,
-               private auth: AuthService,
                private router: Router,
                private toastr: ToastrService) {
     this.form = this.fb.group({
@@ -49,7 +47,7 @@ export class ProjectCreateComponent implements OnInit {
       rating: 0,
       imageUrl: uploadedFiles,
     };
-    const creationResult = await this.projectService.create(this.project)
+    await this.projectService.create(this.project)
       .catch(err => {
         console.error('Project creation failed:', err);
         this.toastr.error('Failed to create project ' + this.project.imageUrl);

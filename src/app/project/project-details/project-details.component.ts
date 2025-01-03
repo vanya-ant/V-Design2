@@ -3,6 +3,7 @@ import {ProjectService} from '../../shared/services/project.service';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {AuthService} from '../../shared/services/auth.service';
 import {ToastrService} from 'ngx-toastr';
+import {IProject} from '../../shared/project';
 
 @Component({
     selector: 'app-project-details',
@@ -12,7 +13,8 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class ProjectDetailsComponent implements OnInit {
 
-  project: any;
+  project: IProject;
+  projects: IProject[];
   stars: number[] = [1, 2, 3, 4, 5];
   selectedValue: number;
 
@@ -23,7 +25,7 @@ export class ProjectDetailsComponent implements OnInit {
               private toastr: ToastrService) {
     this.activatedRoute.params.forEach((params: Params) => {
       this.projectService.getProject(this.activatedRoute.snapshot.params.id)
-        .forEach( p => p.data());
+        .then((data: { data: () => IProject; }) => this.project = data.data());
     });
   }
 
@@ -38,7 +40,7 @@ export class ProjectDetailsComponent implements OnInit {
     return this.auth.isAdmin;
   }
 
-  async countStar(star) {
+  async countStar(star: number) {
     this.selectedValue = star;
     try {
       await this.projectService.rate(star, this.project);

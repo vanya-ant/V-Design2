@@ -15,7 +15,7 @@ export class ProjectPortfolioComponent implements OnInit {
 
   constructor(private projectService: ProjectService) {
     this.projectService.getCollection()
-      .then((querySnapshot) => {
+      .then((querySnapshot: { docs: any; }) => {
         this.projects = querySnapshot.docs;
       });
   }
@@ -23,7 +23,7 @@ export class ProjectPortfolioComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  openImg(imageUrl) {
+  openImg(imageUrl: string | URL) {
     window.open(imageUrl);
   }
 }

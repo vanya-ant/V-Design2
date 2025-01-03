@@ -10,12 +10,12 @@ import {IProject} from '../../shared/project';
 })
 
 export class ProjectListComponent implements OnInit {
-  projects: IProject[];
+  projects: any;
   title: string;
 
   constructor(private projectService: ProjectService) {
     this.projectService.getCollection()
-      .then((querySnapshot) => {
+      .then((querySnapshot: { docs: any; }) => {
         this.projects = querySnapshot.docs;
       });
   }
