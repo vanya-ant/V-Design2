@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ProjectService} from '../../shared/services/project.service';
-import {ActivatedRoute, Params, Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../../shared/services/auth.service';
 import {ToastrService} from 'ngx-toastr';
 import {IProject} from '../../shared/project';

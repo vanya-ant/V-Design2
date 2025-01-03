@@ -20,7 +20,6 @@ export class AdminComponent implements OnInit {
 
   constructor( private fb: UntypedFormBuilder,
                private projectService: ProjectService,
-               private auth: AuthService,
                private router: Router,
                private toastr: ToastrService) {
     this.form = this.fb.group({
@@ -50,9 +49,5 @@ export class AdminComponent implements OnInit {
 
     await this.router.navigate(['projects-portfolio']);
     this.toastr.success('Successfully created project');
-  }
-
-  onUploadFinished(event) {
-    this.pictures.push(event.file);
   }
 }

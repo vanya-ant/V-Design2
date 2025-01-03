@@ -61,11 +61,11 @@
         try {
           let app = firebase.app();
           let features = [
-            'auth', 
-            'database', 
-            'messaging', 
-            'storage', 
-            'analytics', 
+            'auth',
+            'database',
+            'messaging',
+            'storage',
+            'analytics',
             'remoteConfig',
             'performance',
           ].filter(feature => typeof app[feature] === 'function');
