@@ -23,7 +23,7 @@ export class ProjectDetailsComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private auth: AuthService,
               private toastr: ToastrService) {
-    this.activatedRoute.params.forEach((params: Params) => {
+    this.activatedRoute.params.forEach(() => {
       this.projectService.getProject(this.activatedRoute.snapshot.params.id)
         .then((data: { data: () => IProject; }) => this.project = data.data());
     });

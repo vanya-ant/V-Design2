@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {IProject} from '../../shared/project';
 import {ProjectService} from '../../shared/services/project.service';
-import {Observable} from 'rxjs';
 
 @Component({
     selector: 'app-project-portfolio',

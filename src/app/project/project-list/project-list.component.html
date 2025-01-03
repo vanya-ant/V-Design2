@@ -12,7 +12,7 @@
             <div class="numbertext"> {{ (i + 1) }}/ {{ project.data().imageUrl.length }}</div>
             <div id="slider">
               <ul>
-                <img src="{{ img }}" class="gallery-img">
+                <img src="{{ img }}" class="gallery-img" alt="">
               </ul>
             </div>
           </div>
@@ -20,7 +20,7 @@
        <div *ngIf="project.data().imageUrl.length == 1" class="row">
          <div class="column">
            <div *ngFor="let img of project.data().imageUrl">
-             <img src="{{ img }}" class="gallery-img"/>
+             <img src="{{ img }}" class="gallery-img" alt=""/>
            </div>
          </div>
        </div>

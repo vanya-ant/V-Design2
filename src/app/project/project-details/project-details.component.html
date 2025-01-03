@@ -10,13 +10,13 @@
         <div class="numbertext"> {{ (i + 1) }}/ {{ project.imageUrl.length }}</div>
         <div id="slider">
           <ul>
-            <img src="{{ img }}" class="gallery-img">
+            <img src="{{ img }}" class="gallery-img" alt="">
           </ul>
         </div>
       </div>
     </div>
     <div *ngIf="project.imageUrl.length == 1">
-      <img src="{{ project.imageUrl }}" class="gallery-img"/>
+      <img src="{{ project.imageUrl }}" class="gallery-img" alt=""/>
     </div>
     <div *ngIf="isLogged()">
       <div class="project-rating">
