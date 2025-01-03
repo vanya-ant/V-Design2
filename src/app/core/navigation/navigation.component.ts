@@ -4,6 +4,7 @@ import { AuthService } from '../../shared/services/auth.service';
 import { TranslateService } from '@ngx-translate/core';
 import firebase from 'firebase/compat/app';
 import User = firebase.User;
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-navigation',
@@ -13,8 +14,9 @@ import User = firebase.User;
 })
 export class NavigationComponent implements OnInit {
   user: User;
+  activeUserAdmin: User;
 
-  constructor(private auth: AuthService, public translate: TranslateService) {
+  constructor(private auth: AuthService, public translate: TranslateService,  private router: Router) {
     translate.addLangs(['en', 'bg']);
     translate.setDefaultLang('en');
     const browserLang = this.translate.getBrowserLang();
@@ -31,7 +33,7 @@ export class NavigationComponent implements OnInit {
   }
 
   logout() {
-    this.auth.logout();
+    this.auth.logout().then(() => this.router.navigate(['home']));
   }
 
   get activeUser() {
@@ -39,7 +41,10 @@ export class NavigationComponent implements OnInit {
   }
 
   isAdmin() {
-    // return true;
     return this.auth.isAdmin;
+  }
+
+  isActiveUserAdmin(){
+    return this.auth.isAuthenticated() && this.isAdmin();
   }
 }

@@ -14,8 +14,7 @@ import { NotFoundComponent } from './not-found/not-found/not-found.component';
 import { ProjectDetailsComponent } from './project/project-details/project-details.component';
 import { ProjectPortfolioComponent } from './project/project-portfolio/project-portfolio.component';
 import {AdminGuard} from './shared/services/admin.guard';
-import { HomeModule } from './home/home.module';
-import { AboutModule } from './about/about.module';
+import {MoodleComponent} from './moodle/moodle.component';
 
 const routes: Routes = [
   {
@@ -100,6 +99,10 @@ const routes: Routes = [
   {
     path: 'privacy',
     component: PrivacyComponent
+  },
+  {
+    path: 'moodle',
+    component: MoodleComponent
   },
   {
     path: '**',
