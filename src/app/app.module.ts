@@ -21,33 +21,33 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireModule } from '@angular/fire/compat';
 
 @NgModule({ declarations: [
-        AppComponent,
-    ],
-    bootstrap: [AppComponent],
-    imports: [BrowserModule,
-        AngularFireModule.initializeApp(environment.firebase),
-        BrowserAnimationsModule,
-        CoreModule,
-        AppRoutingModule,
-        RouterModule,
-        AngularFirestoreModule, // firestore
-        AngularFireAuthModule, // auth
-        AngularFireStorageModule, // storage
-        FormsModule,
-      ReactiveFormsModule,
-        ToastrModule.forRoot({
-            timeOut: 10000,
-            positionClass: 'toast-bottom-right',
-            preventDuplicates: true,
-        }),
-        AuthModule,
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: translateLoaderFactory,
-                deps: [HttpClient],
-            }
-        })], providers: [provideHttpClient(withInterceptorsFromDi())] })
+    AppComponent,
+  ],
+  bootstrap: [AppComponent],
+  imports: [BrowserModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    BrowserAnimationsModule,
+    CoreModule,
+    AppRoutingModule,
+    RouterModule,
+    AngularFirestoreModule, // firestore
+    AngularFireAuthModule, // auth
+    AngularFireStorageModule, // storage
+    FormsModule,
+    ReactiveFormsModule,
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }),
+    AuthModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: translateLoaderFactory,
+        deps: [HttpClient],
+      }
+    })], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
 
 export function translateLoaderFactory(http: HttpClient) {

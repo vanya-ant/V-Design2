@@ -44,21 +44,6 @@ export class ProjectService {
     await this.db.collection('projects').doc(project.id).update({rating: project.rating});
   }
 
-  // async uploadFiles(files: File[], id) {
-  //   const storageRef = this.st.ref('projects').child('images/');
-  //   for (const file of files) {
-  //     this.path = `images/${file.name}`;
-  //     const task = this.st.upload(this.path, file)
-  //       .snapshotChanges()
-  //       .pipe()
-  //       .subscribe( async async => {
-  //         this.downloadURL = await storageRef.getDownloadURL().toPromise();
-  //         this.array.push(this.downloadURL);
-  //       });
-  //   }
-  //   return this.array;
-  // }
-
   async uploadFiles(files: File[]): Promise<any> {
     const storageRef = this.st.ref('projects');
     if (files && files.length) {

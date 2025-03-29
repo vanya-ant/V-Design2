@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProjectPortfolioComponent } from './project-portfolio/project-portfolio.component';
 import { SharedModule } from '../shared/shared.module';
+import {TranslateModule} from '@ngx-translate/core';
 
 
 
@@ -16,7 +17,7 @@ import { SharedModule } from '../shared/shared.module';
         CommonModule,
         RouterModule,
         ReactiveFormsModule,
-        SharedModule
+        SharedModule,
     ]
 })
 export class ProjectModule { }

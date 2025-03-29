@@ -9,6 +9,7 @@ import {AngularFireAuth} from '@angular/fire/compat/auth';
 import {AngularFirestore} from '@angular/fire/compat/firestore';
 import firebase from 'firebase/compat/app';
 import User = firebase.User;
+import { adminEmail } from 'src/assets/admin';
 
 const baseUrl = 'https://v-design-5.firebaseio.com';
 
@@ -21,7 +22,7 @@ export class AuthService {
   isAdmin = false;
   token: string;
   userStatus: string;
-  private adminEmail = 'vanyad@gmail.com';
+  private adminEmail = adminEmail;
 
   usersCollection;
 
@@ -79,8 +80,7 @@ export class AuthService {
     try {
       await this.afAuth.signOut();
       localStorage.clear();
-      this.isAdmin = false;
-      await this.router.navigate(['/']);
+      await this.router.navigate(['']);
       this.toastr.success('Successfully logged out!');
     } catch (error) {
       this.toastr.error('Error');

@@ -14,7 +14,6 @@ import {TranslateModule} from '@ngx-translate/core';
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
-    TranslateModule
   ]
 })
 export class ContactsModule { }

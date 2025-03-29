@@ -25,9 +25,9 @@
          </div>
        </div>
         <div *ngIf="project.data().rating != 0">
-          <div class="rating-list" *ngFor="let i of [].constructor(project.data().rating)">
-            <i class="fa fa-star"  style="color: var(--golden-text);"></i>
-          </div>
+          <span class="rating-list" *ngFor="let n of getRatingArray(project.data().rating)">
+            <div class="fa-solid fa-star" style="color: var(--golden-text);"></div>
+          </span>
         </div>
         <div *ngIf="project.data().rating == 0">
           <p>Project not rated yet!</p>

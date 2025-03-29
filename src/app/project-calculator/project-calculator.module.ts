@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ProjectCalculatorComponent } from './project-calculator/project-calculator.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import {TranslateModule} from '@ngx-translate/core';
 
 
 
@@ -11,7 +12,7 @@ import { SharedModule } from '../shared/shared.module';
     imports: [
         CommonModule,
         ReactiveFormsModule,
-        SharedModule
+        SharedModule,
     ]
 })
 export class ProjectCalculatorModule { }

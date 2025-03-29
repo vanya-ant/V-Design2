@@ -9,8 +9,6 @@ import {ProjectService} from '../../shared/services/project.service';
 })
 
 export class ProjectListComponent implements OnInit {
-  projects: any;
-  title: string;
 
   constructor(private projectService: ProjectService) {
     this.projectService.getCollection()
@@ -18,7 +16,13 @@ export class ProjectListComponent implements OnInit {
         this.projects = querySnapshot.docs;
       });
   }
+  projects: any;
+  title: string;
 
   ngOnInit() {
+  }
+
+  getRatingArray(n: number): Array<number> {
+    return Array(n);
   }
 }

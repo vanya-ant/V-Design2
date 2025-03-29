@@ -13,12 +13,12 @@
     <a class="page-link" routerLink="/project-calculator">{{'NAV.PROJECT-CALCULATOR' | translate}}</a>
     <div class="border-animation"></div>
     <a class="page-link" routerLink="/contacts">{{'NAV.CONTACTS' | translate}}</a>
+    <div class="site-nav-moodle">
+      <a class="page-link" href="/moodle/">MOODLE</a>
+    </div>
     <div *ngIf="isAdmin() && isActiveUserAdmin()">
       <a class="page-link" routerLink="/project-create">{{'NAV.CREATE-PROJECT' | translate}}</a>
     </div >
-    <div id="moodleLink" style="display: none">
-      <a class="page-link" routerLink="/moodle"></a>
-    </div>
     <div *ngIf="!activeUser">
       <div class="site-nav-login-register">
         <a class="page-link" routerLink="/login">{{'NAV.LOGIN' | translate}}</a>
