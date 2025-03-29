@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { } from '@angular/fire/auth';
 import { HttpClient } from '@angular/common/http';
-import {CollectionReference} from '@angular/fire/firestore';
-import {environment} from '../../../environments/environment';
 import {AngularFireAuth} from '@angular/fire/compat/auth';
 import {AngularFirestore} from '@angular/fire/compat/firestore';
 import firebase from 'firebase/compat/app';

@@ -4,7 +4,7 @@ import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
-import {TranslateModule} from '@ngx-translate/core';
+
 
 @NgModule({
   declarations: [NavigationComponent, FooterComponent],
