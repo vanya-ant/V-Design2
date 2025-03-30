@@ -8,7 +8,6 @@ import firebase from 'firebase/compat/app';
 import User = firebase.User;
 import { adminEmail } from 'src/assets/admin';
 
-const baseUrl = 'https://v-design-5.firebaseio.com';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +17,6 @@ export class AuthService {
   private user: User;
   isAdmin = false;
   token: string;
-  userStatus: string;
   private adminEmail = adminEmail;
 
   usersCollection;
@@ -39,9 +37,6 @@ export class AuthService {
     this.usersCollection = db.collection<User>('users').ref;
   }
 
-  getCollection() {
-    return this.usersCollection.get();
-  }
 
   async login(email: string, password: string) {
     try {
@@ -101,24 +96,6 @@ export class AuthService {
 
   get activeUser() {
     return JSON.parse(localStorage.getItem('user'));
-  }
-
-  get checkAuthorization(): boolean {
-    if (!this.user) { return false; }
-    return !!this.activeUser.isAuthenticated().isAdmin();
-  }
-
-  getById(id: string) {
-    return this.http.get<User>(`${baseUrl}/${id}/.json`);
-  }
-
-  getToken() {
-    firebase.auth().currentUser.getIdToken()
-      .then(
-        (token: string) => {
-          this.token = token;
-        });
-    return this.token;
   }
 
   isAuthenticated() {

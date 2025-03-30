@@ -16,7 +16,7 @@
     <div class="site-nav-moodle">
       <a class="page-link" href="/moodle/">MOODLE</a>
     </div>
-    <div *ngIf="isAdmin() && isActiveUserAdmin()">
+    <div *ngIf="isAdmin()">
       <a class="page-link" routerLink="/project-create">{{'NAV.CREATE-PROJECT' | translate}}</a>
     </div >
     <div *ngIf="!activeUser">

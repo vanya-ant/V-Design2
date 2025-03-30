@@ -25,8 +25,8 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.auth.activeUser != null) {
-      this.auth.logout();
+    if (this.auth.activeUser) {
+      this.auth.logout().then(() => this.router.navigate(['']));
     }
   }
 

@@ -33,7 +33,7 @@ export class NavigationComponent implements OnInit {
   }
 
   logout() {
-    this.auth.logout().then(() => this.router.navigate(['home']));
+    this.auth.logout().then(() => this.router.navigate(['']));
   }
 
   get activeUser() {
@@ -42,9 +42,5 @@ export class NavigationComponent implements OnInit {
 
   isAdmin() {
     return this.auth.isAdmin;
-  }
-
-  isActiveUserAdmin(){
-    return this.auth.isAuthenticated() && this.isAdmin();
   }
 }

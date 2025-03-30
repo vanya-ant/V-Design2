@@ -4,7 +4,6 @@ import { AuthService } from '../../shared/services/auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { passwordMatch } from '../../shared/validators';
-import firebase from 'firebase/compat/app';
 
 @Component({
     selector: 'app-register',
@@ -31,7 +30,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     if (this.auth.activeUser) {
-      this.logout();
+      this.logout().then(() => this.router.navigate(['']));
     }
   }
 

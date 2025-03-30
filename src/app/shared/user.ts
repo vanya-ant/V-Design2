@@ -1,5 +1,4 @@
-import { initializeApp } from 'firebase/app';
-import {environment} from '../../environments/environment';
+import {adminEmail} from '../../assets/admin';
 
 export interface Roles{
   admin?: boolean;
@@ -14,6 +13,10 @@ export class User implements firebase.User {
   constructor(uid: string, email: string){
     this.uid = uid;
     this.email = email;
+    if (this.email === adminEmail) {
+      this.role = 'admin';
+      return;
+    }
     this.role = 'user';
   }
 }
