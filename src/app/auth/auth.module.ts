@@ -6,6 +6,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
+import {TranslateModule} from '@ngx-translate/core';
 
 
 
@@ -16,7 +17,8 @@ import { SharedModule } from '../shared/shared.module';
         ReactiveFormsModule,
         FormsModule,
         RouterModule,
-        SharedModule
+        SharedModule,
+        TranslateModule
     ]
 })
 export class AuthModule { }

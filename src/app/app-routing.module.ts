@@ -1,57 +1,55 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AboutComponent } from './about/about/about.component';
+import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
-import { ProjectListComponent } from './project/project-list/project-list.component';
-import { ProjectCreateComponent } from './project/project-create/project-create.component';
-import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
-import { HomeComponent } from './home/home/home.component';
 import { ContactsComponent } from './contacts/contacts/contacts.component';
-import { ProjectCalculatorComponent } from './project-calculator/project-calculator/project-calculator.component';
-import { AboutComponent } from './about/about/about.component';
-import { PrivacyComponent } from './privacy/privacy/privacy.component';
+import { HomeComponent } from './home/home/home.component';
+import { MoodleComponent } from './moodle/moodle.component';
 import { NotFoundComponent } from './not-found/not-found/not-found.component';
+import { PrivacyComponent } from './privacy/privacy/privacy.component';
+import { ProjectCalculatorComponent } from './project-calculator/project-calculator/project-calculator.component';
+import { ProjectCreateComponent } from './project/project-create/project-create.component';
 import { ProjectDetailsComponent } from './project/project-details/project-details.component';
+import { ProjectListComponent } from './project/project-list/project-list.component';
 import { ProjectPortfolioComponent } from './project/project-portfolio/project-portfolio.component';
 import { AdminGuard } from './shared/services/admin.guard';
-import { MoodleComponent } from './moodle/moodle.component';
-import { HomeModule } from './home/home.module';
-import { AboutModule } from './about/about.module';
 
 const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
-    component: HomeComponent
+    component: HomeComponent,
+    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule)
   },
   {
     path: 'login',
     component: LoginComponent,
-    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
     data: {
-      isLogged: false
-    }
+      isLogged: false,
+    },
   },
   {
     path: 'register',
     component: RegisterComponent,
-    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   {
     path: 'contacts',
     component: ContactsComponent,
-    loadChildren: () => import('./contacts/contacts.module').then(m => m.ContactsModule),
+    loadChildren: () => import('./contacts/contacts.module').then((m) => m.ContactsModule),
     data: {
-      isLogged: false
+      isLogged: false,
     },
   },
   {
     path: 'project-calculator',
     component: ProjectCalculatorComponent,
-    loadChildren: () => import('./project-calculator/project-calculator.module').then(m => m.ProjectCalculatorModule),
+    loadChildren: () => import('./project-calculator/project-calculator.module').then((m) => m.ProjectCalculatorModule),
     data: {
-      isLogged: false
-    }
+      isLogged: false,
+    },
   },
   {
     path: 'projects-portfolio',
@@ -64,57 +62,58 @@ const routes: Routes = [
       {
         path: ':id',
         component: ProjectDetailsComponent,
-        loadChildren: () => import('./project/project.module').then(m => m.ProjectModule),
+        loadChildren: () => import('./project/project.module').then((m) => m.ProjectModule),
         data: {
-          isLogged: false
-        }
-      }
+          isLogged: false,
+        },
+      },
     ],
     data: {
-      isLogged: false
-    }
+      isLogged: false,
+    },
   },
   {
     path: 'portfolio',
     component: ProjectPortfolioComponent,
     data: {
-      isLogged: false
-    }
+      isLogged: false,
+    },
   },
   {
     path: 'project-create',
     component: ProjectCreateComponent,
-    loadChildren: () => import('./project/project.module').then(m => m.ProjectModule),
+    loadChildren: () => import('./project/project.module').then((m) => m.ProjectModule),
     canActivate: [AdminGuard],
     data: {
-      isAdmin: true
-    }
+      isAdmin: true,
+    },
   },
   {
     path: 'about',
-    component: AboutComponent
+    component: AboutComponent,
+    loadChildren: () => import('./about/about.module').then((m) => m.AboutModule)
   },
   {
     path: 'forgot-password',
-    component: ForgotPasswordComponent
+    component: ForgotPasswordComponent,
   },
   {
     path: 'privacy',
-    component: PrivacyComponent
+    component: PrivacyComponent,
   },
   {
     path: 'moodle',
-    component: MoodleComponent
+    component: MoodleComponent,
   },
   {
     path: '**',
-    component: NotFoundComponent
+    component: NotFoundComponent,
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {})],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 
 export class AppRoutingModule { }

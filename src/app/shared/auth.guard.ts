@@ -2,12 +2,11 @@ import { Injectable } from '@angular/core';
 
 import { ActivatedRouteSnapshot, RouterStateSnapshot, Router, UrlTree } from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
-import {Observable, observable} from 'rxjs';
-import {map, take } from 'rxjs/operators';
-import * as _ from 'lodash';
+import {Observable} from 'rxjs';
+
 import {AuthService} from './services/auth.service';
 import {AngularFireDatabase} from '@angular/fire/compat/database';
-// import {ignoreDiagnostics} from '@angular/compiler-cli/src/ngtsc/typecheck/src/diagnostics';
+
 
 @Injectable({
   providedIn: 'root'
